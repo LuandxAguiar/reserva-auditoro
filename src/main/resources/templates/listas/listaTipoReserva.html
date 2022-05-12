@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Tipos de Reserva</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
+	media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Cancelar</th>
+
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr th:each="t:${tipo}">
+
+				<td th:text="${t.id}" />
+				<td th:text="${t.nome}" />
+
+				<td><a th:href="@{/excluirTipo(id=${t.id})}"> <i
+						class="material-icons">delete_forever</i>
+				</a></td>
+
+			</tr>
+
+		</tbody>
+
+
+	</table>
+
+	<ul class="pagination">
+		<li th:class="${pagAtual == 1 ? 'disabled' : 'waves-effect'}"><a
+			th:href="${pagAtual > 1 ? pagAtual - 1 : '#'}"><i
+				class="material-icons">chevron_left</i></a></li>
+		<li th:class="${pagAtual == p ? 'active purple' : 'waves-effect'}"
+			th:each="p:${numPag}"><a th:href="${p}"><span th:text="${p}"></span></a></li>
+
+		<li th:class="${pagAtual == totalPages ? 'disabled' : 'waves-effect'}"><a
+			th:href="${pagAtual < totalPages ? pagAtual + 1 : '#'}"><i
+				class="material-icons">chevron_right</i></a></li>
+
+	</ul>
+</body>
+</html>

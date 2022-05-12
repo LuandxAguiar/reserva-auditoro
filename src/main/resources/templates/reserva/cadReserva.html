@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Adicione uma Reserva</h1>
+	<div>
+	<form action="salvareserva" method="post">
+		<input type="hidden" name="id" th:value="${r?.id}"/>
+		
+		<h1>Cadastro de Reservas</h1>
+		<label>Data da Reserva</label>
+		<input type="date" name="data" th:value="${r?.data}">
+		 <label>Descrição</label>
+		 <input
+			type="text" name="descricaoReserva" th:value="${r?.descricaoReserva}"> 
+			
+		
+		<button type="submit">Reservar</button>
+	</form>
+	</div>
+</body>
+</html>

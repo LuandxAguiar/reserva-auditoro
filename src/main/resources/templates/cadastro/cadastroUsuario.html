@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Formulario de Cadasatro</title>
+<style >
+	*{
+		text-align: center;
+		margin:auto;
+		
+	}
+	form{
+		background-color: cyan;
+		border: solid 4px black;
+		padding: 15px;
+	}
+	div{
+		background-color: aquamarine;
+		width: 30%;
+	}
+	td{
+	padding: 1.2em;
+	}
+
+</style>
+</head>
+
+<body>
+	<h1>Formulário de Cadastro</h1>
+	<div>
+	<form action="save" method="post">
+		<input type="hidden" name="id" th:value="${users?.id}"/>
+		
+		<h1>Cadastro de Users</h1>
+		<label>nome</label><input type="text" name="nome" th:value="${users?.nome}"> <label>senha</label><input
+			type="text" name="senha" th:value="${users?.senha}"> 
+			<label>nif</label><input type="text" name="nif" th:value="${users?.nif}">
+			 <select >
+			
+			<option value="opp">professores</option>
+			<option value="adm">ADM</option>
+			<option value="secretaria">secretaria</option>
+
+		</select>
+		
+		<button type="submit"> Enviar</button>
+	</form>
+	</div>
+
+</body>
+</html>
