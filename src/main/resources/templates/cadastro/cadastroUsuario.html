@@ -32,9 +32,13 @@
 		<input type="hidden" name="id" th:value="${users?.id}"/>
 		
 		<h1>Cadastro de Users</h1>
-		<label>nome</label><input type="text" name="nome" th:value="${users?.nome}"> <label>senha</label><input
+		<label>nome</label><input type="text" name="nome" th:value="${users?.nome}">
+		<label>Email</label><input type="text" name="email" th:value="${users?.email}"> 
+		 <label>senha</label><input
 			type="text" name="senha" th:value="${users?.senha}"> 
 			<label>nif</label><input type="text" name="nif" th:value="${users?.nif}">
+			
+			
 			 <select >
 			
 			<option value="opp">professores</option>

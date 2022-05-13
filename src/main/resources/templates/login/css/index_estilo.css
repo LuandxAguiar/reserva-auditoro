@@ -1,0 +1,72 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-image: url("../imagens/auditorium.jpg");
+	
+}
+
+.nav-wrapper {
+	background-color: #F63D3D;
+}
+.nav-wrapper img {
+	width: 11.5%;
+	margin: 2px;
+}
+.nav-wrapper a{
+	background-color:white; 
+	color: #F63D3D; 
+	font-size: 15px;
+}
+.signup-form {
+	background-color: white;
+	width: 25%;
+	height: 40%;
+	align-items: center;
+	margin: auto;
+	margin-top: 120px;
+	border: 5px solid;
+	border-radius: 25px;
+	overflow: hidden;
+	box-shadow: 5px 10px #888888;
+	
+}
+.signup-form h3 {
+	text-align: center;
+}
+.informacoes{
+	align-items: center; 
+	padding: 40px;
+}
+.button{
+	background-color: #F63D3D; 
+	color: white; 
+	width: 100%; 
+	height: 10%; 
+	border-radius: 0.8em;
+}
+footer {
+	width:100%;
+	position: absolute;
+	bottom: 0;
+}
+.page-footer{
+	background-color: slategrey;
+}
+.row {
+	text-align: center;
+}
+.container img{
+	width: 3%;
+}
+hr{
+	height: 2px; 
+	background-color: white;
+}
+.footer-copyright {
+	background-color: #F63D3D;
+	text-align: center;
+}
+
+

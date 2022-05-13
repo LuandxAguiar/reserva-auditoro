@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -20,5 +21,7 @@ public class Reserva {
 		private Long id;
 		private String data;
 		private String descricaoReserva;
-		private String fotos;  
+		private String fotos; 
+		@ManyToOne
+		private TipoReserva tipo;
 }

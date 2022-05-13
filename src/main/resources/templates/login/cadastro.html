@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Cadastro</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">	
+        <link rel="stylesheet" href="css/cadastro_estilo.css"> 
+    </head>
+	<body>		
+        <nav>
+			<div class="nav-wrapper">
+				<img src="imagens/logo_senai.png" alt="Logo do SENAI" >	
+			  <ul class="right hide-on-med-and-down">
+				<li><a class="waves-effect waves-light btn"><b>Eventos</b></a></li>
+			  </ul>
+			</div>
+		</nav>
+		
+	    <form class="cadastro">
+			<h3>Cadastro</h3>
+            <div class="informacoes">
+			    <input type="hidden" name="id" th:value="" >
+                <input type="text" class="input" name="nome" th:value="" id="nome" autocomplete="off" placeholder="Digite seu nome">	
+                <input type="text" class="input" name="nif" th:value="" id="nif" autocomplete="off" placeholder="Digite seu NIF">
+                <input type="email" class="input" name="email" th:value="" id="email" autocomplete="off" placeholder="Digite seu E-mail">
+                <input type="password" class="input" name="senha" id="senha" autocomplete="off"	placeholder="Digite sua senha">	
+
+                <div class="radios">     
+                    <p class="tipo_cadastro">Tipo de cadastro</p>
+                    <label>
+                        <input name="group3" type="radio" class="with-gap" id="adm" checked />
+                        <span>Administrador</span>
+                    </label>
+                    <label>
+                        <input name="group3" type="radio" class="with-gap" id="user" />
+                        <span>Usuário</span>
+                    </label>
+		        </div>
+                <input type="submit"class="button" value="Cadastrar">
+                </div>							
+		</form>		
+	</body>
+</html>

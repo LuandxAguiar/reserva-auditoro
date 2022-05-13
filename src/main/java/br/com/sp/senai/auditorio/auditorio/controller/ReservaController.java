@@ -15,15 +15,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
 import br.com.sp.senai.auditorio.auditorio.repository.ReservaRepository;
+import br.com.sp.senai.auditorio.auditorio.repository.TipoReservaRepository;
 
 @Controller
 public class ReservaController {
 	
 	@Autowired
 	private ReservaRepository repository;
+	@Autowired
+	private TipoReservaRepository trRep;
 	
 	@RequestMapping(value = "reserva", method = RequestMethod.GET)
-	private String form() {
+	private String form(Model model) {
+		model.addAttribute("tipo", trRep.findAll());
 		return "reserva/cadReserva";
 	}
 	

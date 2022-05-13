@@ -1,0 +1,48 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.nav-wrapper {
+	background-color: rgb(243, 55, 55);
+}
+.nav-wrapper img {
+	width: 11.5%;
+	margin: 2px;
+}
+.nav-wrapper a{
+	background-color:white; 
+	color: red; 
+	font-size: 15px;
+}
+.cadastro{
+    width: 25%;
+	align-items: center;
+	margin: auto;
+	margin-top: 120px;
+	border: 5px solid;
+	border-radius: 25px;
+	overflow: hidden;
+    box-shadow: 5px 10px #888888;
+
+}
+.cadastro h3{
+    text-align: center;
+}
+.informacoes {
+    align-items: center; 
+	padding: 40px;
+}
+.button{
+	background-color: red; 
+	color: white; 
+	width: 100%; 
+	height: 35px; 
+	border-radius: 0.8em;
+    margin-top: 15px;
+}
+.with-gap{
+    background-color: red;
+}
+.tipo_cadastro{
+    color: #b8b8b8;
+}

@@ -5,5 +5,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import br.com.sp.senai.auditorio.auditorio.model.Usuario;
 
 public interface UsuarioRepository extends PagingAndSortingRepository<Usuario,Long>{
-
+		
+	public Usuario findByNif(String nif);
+	
+	public Usuario findByNifAndSenha(String nif, String senha);
 }
