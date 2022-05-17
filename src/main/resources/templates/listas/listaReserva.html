@@ -21,6 +21,8 @@
 				<th>ID</th>
 				<th>Data</th>
 				<th>Descrição</th>
+				<th>periodo</th>
+				<th>Motivo da reserva</th>
 				<th>Editar</th>
 				<th>Cancelar</th>
 
@@ -33,6 +35,8 @@
 				<td th:text="${r.id}" />
 				<td th:text="${r.data}" />
 				<td th:text="${r.descricaoReserva}" />
+				<td th:text="${r.periodo}">
+				<td th:text="${r?.tipo?.nome}"/>
 				<td><a th:href="@{/alteraReserva(id=${r.id})}"><i
 						class="material-icons">create</i> </a></td>
 

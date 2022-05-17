@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Entity
@@ -19,9 +21,11 @@ public class Reserva {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long id;
+		@DateTimeFormat(pattern = "yyyy-MM-dd")
 		private String data;
 		private String descricaoReserva;
 		private String fotos; 
 		@ManyToOne
 		private TipoReserva tipo;
+		private Periodo periodo;
 }
