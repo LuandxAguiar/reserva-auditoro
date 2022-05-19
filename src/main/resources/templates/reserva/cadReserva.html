@@ -2,10 +2,10 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Cadastro Reserva</title>
+<title>Cadastro Reserva no Auditorio</title>
 </head>
 <body>
-	<h1>Adicione uma Reserva</h1>
+	<h1>Adicione um dia no auditorio</h1>
 	<div>
 		<form action="salvareserva" method="post">
 			<input type="hidden" name="id" th:value="${r?.id}" />
@@ -15,19 +15,19 @@
 				th:value="${r?.data}"> <label>Descrição</label> <input
 				type="text" name="descricaoReserva"
 				th:value="${r?.descricaoReserva}"> <label>Motivo da
-				Reserva</label> <select th:checked="${r?.tipo}" name="tipo.id">
-				<option th:each="t : ${tipo}" th:text="${t?.nome}" th:value="${t?.id}"
-					th:select="${t.id == r?.tipo?.id}" > </option>
-			</select> 
-			<label>
-			Periodo da Reserva
-			</label>
-			<select name="periodo" th:value="${r?.periodo}">
-			<option  th:each="periodo : ${T(br.com.sp.senai.auditorio.auditorio.model.Periodo).values()}"
-			th:value="${r?.periodo}" th:text="${periodo}">
-			</option>
+				Reserva </label>
+				 <select name="tipo.id">
+				<option th:each="t : ${tipo}" th:text="${t?.nome}"
+					th:value="${t?.id}" th:selected="${t.id == r?.tipo?.id}"
+					selected="selected"></option>
+			</select> <label> Periodo da Reserva </label> 
+			<select name="periodo"
+				>
+				<option name="periodo"
+					th:each="periodo : ${T(br.com.sp.senai.auditorio.auditorio.model.Periodo).values()}"
+					th:value="${reserva?.periodo}" th:text="${periodo}"
+					selected="selected"></option>
 			</select>
-
 			<button type="submit">Reservar</button>
 		</form>
 	</div>

@@ -26,6 +26,7 @@ public class ReservaRestCotroller {
 		return repository.findAll();
 	}
 	
+	
 	@RequestMapping("/{id}")
 	public ResponseEntity<Reserva> getReserva(@PathVariable("id") Long idReserva){
 		//tentado
@@ -38,6 +39,8 @@ public class ReservaRestCotroller {
 						return ResponseEntity.notFound().build();
 					}
 	}
+	
+	
 }
 	
 

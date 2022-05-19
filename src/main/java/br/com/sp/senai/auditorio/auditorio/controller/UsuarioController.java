@@ -123,19 +123,19 @@ public class UsuarioController {
 	
 	//
 	
-	@RequestMapping("log")
+	@RequestMapping("login")
 	public String login(Usuario admLogin, RedirectAttributes attr, HttpSession session){
 		//buscar o adm no banco
 		
 		Usuario user = repository.findByNifAndSenha(admLogin.getNif(), admLogin.getSenha());
 		//verificar se existe
 		if(user == null) {
-			System.out.println("adm não existe");
+			System.out.println("usuario não existe");
 			attr.addFlashAttribute("mensagemErro","Login ou Senha invalida(s)");
 				return"login/login";
 			
 		}else {
-			System.out.println("adm existe");
+			System.out.println("usuario existe");
 			//salva o adm na sessão 
 			session.setAttribute("usuarioLogado", user);
 			//mandar para a pagina inicial ou lista de restaurante 

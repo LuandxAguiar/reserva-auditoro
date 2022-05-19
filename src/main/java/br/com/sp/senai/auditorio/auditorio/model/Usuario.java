@@ -36,5 +36,10 @@ public class Usuario {
 		public void setSenhaComHash(String hash) {
 				this.senha = hash;
 		}
+		
+	public boolean getHierarquia(String token) {
+		this.hierarquia = token;
+		return true;
+	}
 	
 }

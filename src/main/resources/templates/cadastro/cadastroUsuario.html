@@ -37,17 +37,13 @@
 		 <label>senha</label><input
 			type="text" name="senha" th:value="${users?.senha}"> 
 			<label>nif</label><input type="text" name="nif" th:value="${users?.nif}">
-			
-			
-			 <select >
-			
-			<option value="opp">professores</option>
-			<option value="adm">ADM</option>
-			<option value="secretaria">secretaria</option>
-
-		</select>
-		
+			<br>
+			<label>ADM</label><input type="radio" name="permission">
+			<label>OPP</label><input type="radio" name="permission">
+			<br>
 		<button type="submit"> Enviar</button>
+		
+		
 	</form>
 	</div>
 
