@@ -1,6 +1,8 @@
 package br.com.sp.senai.auditorio.auditorio.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.com.sp.senai.auditorio.auditorio.model.Periodo;
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
 import br.com.sp.senai.auditorio.auditorio.repository.ReservaRepository;
 import br.com.sp.senai.auditorio.auditorio.repository.TipoReservaRepository;
@@ -32,13 +35,25 @@ public class ReservaController {
 	}
 
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
-	public String salvar(Reserva reserva) {
+	public String salvar(Reserva reserva, String date) throws Exception {
 	
+		List<Reserva> data = repository.findByData(date);
+		int podSalvar=0;
+		if(data != null) {
+			
+			for(int i = 1; i <= 31; i++) {
+				
+				
+			}
+			
+		}
+		
 		
 		
 		repository.save(reserva);
 		return "redirect:reserva";
-	}
+		}
+	
 
 	@RequestMapping("listareserva/{page}")
 	public String listaReserva(Model model, @PathVariable("page") int page) {
