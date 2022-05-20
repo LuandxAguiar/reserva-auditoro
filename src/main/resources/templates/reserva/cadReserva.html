@@ -15,18 +15,21 @@
 				th:value="${r?.data}"> <label>Descrição</label> <input
 				type="text" name="descricaoReserva"
 				th:value="${r?.descricaoReserva}"> <label>Motivo da
-				Reserva </label>
-				 <select name="tipo.id">
+				Reserva </label> <select name="tipo.id">
 				<option th:each="t : ${tipo}" th:text="${t?.nome}"
 					th:value="${t?.id}" th:selected="${t.id == r?.tipo?.id}"
 					selected="selected"></option>
+
+
+
 			</select> <label> Periodo da Reserva </label> 
-			<select name="periodo"
-				>
-				<option name="periodo"
+			<select name="periodo">
+				<option
 					th:each="periodo : ${T(br.com.sp.senai.auditorio.auditorio.model.Periodo).values()}"
-					th:value="${reserva?.periodo}" th:text="${periodo}"
-					selected="selected"></option>
+					th:value="${periodo}" 
+					th:text="${periodo}"
+					th:selected="${periodo.toString() == r?.periodo?.toString()}"
+					></option>
 			</select>
 			<button type="submit">Reservar</button>
 		</form>
