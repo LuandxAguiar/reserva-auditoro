@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -49,6 +48,7 @@ public class AppInterceptor implements HandlerInterceptor {
 						JWTVerifier verifier = JWT.require(algorito).withIssuer(UsuarioRestController.EMISSOR).build();
 						DecodedJWT jwt = verifier.verify(token);
 						Map<String, Claim> claims = jwt.getClaims();
+						System.out.println(claims);
 						return true;
 						}else {
 							return false;

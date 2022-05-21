@@ -3,7 +3,7 @@ package br.com.sp.senai.auditorio.auditorio.model;
 
 
 public enum Periodo {
-	MANHA("manha"), TARDE("tarde"), NOITE("noite");
+	MANHA("manha"), TARDE("tarde"), NOITE("noite"), TODOS("todos");
 	
 	String periodo; 
 	Periodo(String string) {

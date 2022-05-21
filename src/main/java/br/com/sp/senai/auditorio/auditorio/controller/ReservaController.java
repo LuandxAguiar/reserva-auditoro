@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sp.senai.auditorio.auditorio.model.Periodo;
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
@@ -28,33 +29,38 @@ public class ReservaController {
 	@Autowired
 	private TipoReservaRepository trRep;
 
+	// request e metodo para cadastrar uma reserva
 	@RequestMapping(value = "reserva", method = RequestMethod.GET)
 	private String form(Model model) {
 		model.addAttribute("tipo", trRep.findAll());
 		return "reserva/cadReserva";
 	}
 
+	// metodo de salvamento da agenda
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
-	public String salvar(Reserva reserva, String date) throws Exception {
-	
-		List<Reserva> data = repository.findByData(date);
-		int podSalvar=0;
-		if(data != null) {
-			
-			for(int i = 1; i <= 31; i++) {
-				
-				
-			}
-			
+	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr) throws Exception {
+		try {
+		Reserva agendamento = repository.findByDataAndPeriodo(data, periodo) ;
+		
+		if (agendamento != null) {
+			return "redirect:reserva";
 		}
-		
-		
-		
 		repository.save(reserva);
-		return "redirect:reserva";
+		}catch (Exception e) {
+			attr.addFlashAttribute("mensagemErro", "Ao fazer uma reserva ouve um erro" + e.getMessage());	
+			System.out.println("erro");
 		}
-	
+				
+			
+		
+			
+		return "redirect:reserva";
+	}
 
+
+
+
+	// listar as reservas realizadas
 	@RequestMapping("listareserva/{page}")
 	public String listaReserva(Model model, @PathVariable("page") int page) {
 		PageRequest pageble = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.ASC, "data"));
@@ -80,8 +86,10 @@ public class ReservaController {
 		return "listas/listaReserva";
 	}
 
+	// alterar a reserva
 	@RequestMapping("alteraReserva")
 	public String alteraReserva(Long id, Model model) {
+		// busca a reserva pelo ID possibilitando a alteração
 		Reserva reserva = repository.findById(id).get();
 		model.addAttribute("r", reserva);
 		return "forward:reserva";
@@ -89,6 +97,7 @@ public class ReservaController {
 
 	@RequestMapping("exclueReserva")
 	public String excluir(Long id) {
+		// excluir a reserva pelo ID
 		Reserva reserva = repository.findById(id).get();
 		repository.delete(reserva);
 		return "redirect:listareserva/1";
