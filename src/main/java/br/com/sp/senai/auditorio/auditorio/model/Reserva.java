@@ -21,6 +21,7 @@ public class Reserva {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long id;
+		private String nome;
 		@DateTimeFormat(pattern = "yyyy-MM-dd")
 		private String data;
 		private String descricaoReserva;

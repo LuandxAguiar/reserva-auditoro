@@ -54,7 +54,7 @@ function init_calendar(date) {
                 curr_date.addClass("event-date");
             }
             // Definir manipulador onClick para clicar em uma data
-            curr_date.click({events: events, month: months[month], day:day}, date_click);
+            curr_date.click({events: events, month: months[month], day:day, year:year}, date_click);
             row.append(curr_date);
         }
     }
@@ -79,7 +79,8 @@ function date_click(event) {
     show_events(event.data.events, event.data.month, event.data.day);
    
     input = document.querySelector(".active-date");
-    
+    var d = event.data.year + "-" + event.data.month + "-" + event.data.day;
+    document.getElementById("data").value = d;
 };
 
 // Manipulador de eventos para quando um mês é clicado
@@ -142,6 +143,9 @@ function new_event(event) {
         var description = $("#description").val().trim();
         var count = $("#count option:selected").text();
         var day = parseInt($(".active-date").html());
+        
+        // pegar a var 
+        
         // Validação de formulário básico
         if(name.length === 0) {
             $("#name").addClass("error-input");
@@ -170,7 +174,8 @@ function new_event_json(name, description, count, date, day) {
         "invited_count": count,
         "year": date.getFullYear(),
         "month": date.getMonth()+1,
-        "day": day
+        "day": day,
+        "data": date
     };
     event_data["events"].push(event);
 }
@@ -181,6 +186,8 @@ function show_events(events, month, day) {
     $(".events-container").empty();
     $(".events-container").show(250);
     console.log(event_data["events"]);
+    console.log(event_name);
+    
     // Se não houver eventos para esta data, notifique o usuário
     if(events.length===0) {
         var event_card = $("<div class='event-card'></div>");

@@ -19,6 +19,7 @@
 		<thead>
 			<tr>
 				<th>ID</th>
+				<th>Responsavel</th>
 				<th>Data</th>
 				<th>Descrição</th>
 				<th>periodo</th>
@@ -33,6 +34,7 @@
 			<tr th:each="r:${reserva}">
 
 				<td th:text="${r.id}" />
+				<td th:text="${r.nome}" />
 				<td th:text="${r.data}" />
 				<td th:text="${r.descricaoReserva}" />
 				<td th:text="${r?.periodo}">

@@ -45,6 +45,8 @@ public class ReservaController {
 	// metodo de salvamento da agenda
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
 	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr) throws Exception {
+		System.out.println(reserva.getData());
+		System.out.println(reserva.getNome());
 		try {
 		Reserva agendamento = repository.findByDataAndPeriodo(data, periodo) ;
 		
@@ -98,7 +100,7 @@ public class ReservaController {
 		// busca a reserva pelo ID possibilitando a alteração
 		Reserva reserva = repository.findById(id).get();
 		model.addAttribute("r", reserva);
-		return "forward:reserva";
+		return "forward:calendario";
 	}
 
 	@RequestMapping("exclueReserva")

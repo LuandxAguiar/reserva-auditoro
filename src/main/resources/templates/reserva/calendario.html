@@ -1,142 +1,104 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <title>Calendário</title>
-  <meta name="description" content="Calendar">
-  <link rel="stylesheet" href="../css/calendar_estilo.css">
+<meta charset="utf-8">
+<title>Calendário</title>
+<meta name="description" content="Calendar">
+<link rel="stylesheet" href="../css/calendar_estilo.css">
 
 </head>
 
 <body>
-  <div class="content">
-    <div class="calendar-container">
-      <div class="calendar"> 
-        <div class="year-header"> 
-          <span class="left-button" id="prev"> &lang; </span> 
-          <span class="year" id="label"></span> 
-          <span class="right-button" id="next"> &rang; </span>
-        </div> 
-        <table class="months-table"> 
-          <tbody>
-            <tr class="months-row">
-              <td class="month">Jan</td> 
-              <td class="month">Fev</td> 
-              <td class="month">Mar</td> 
-              <td class="month">Abr</td> 
-              <td class="month">Mai</td> 
-              <td class="month">Jun</td> 
-              <td class="month">Jul</td>
-              <td class="month">Ago</td> 
-              <td class="month">Set</td> 
-              <td class="month">Out</td>          
-              <td class="month">Nov</td>
-              <td class="month">Dez</td>
-            </tr>
-          </tbody>
-        </table> 
-        
-        <table class="days-table"> 
-          <td class="day">Seg</td> 
-          <td class="day">Ter</td> 
-          <td class="day">Qua</td> 
-          <td class="day">Qui</td> 
-          <td class="day">Sex</td> 
-          <td class="day">Sab</td> 
-          <td class="day">Dom</td>
-        </table> 
-        <div class="frame"> 
-          <table class="dates-table"> 
-              <tbody class="tbody">             
-              </tbody> 
-          </table>
-        </div> 
-        <button class="button" id="add-button">Adicionar evento</button>
-      </div>
-    </div>
-  <div class="events-container">
-    </div>
-    <div class="dialog" id="dialog">
-        <h2 class="dialog-header">Adicionar novo evento</h2>
-        
-        <form class="form" id="form" action="salvareserva" method="post">
-        <input type="hidden" name="id" th:value="${r?.id}" />
-       
-        
-          <div class="form-container" align="center">
-            <label class="form-label" id="valueFromMyButton" for="name">Nome do evento</label>
-            <input class="input" type="text" id="name" maxlength="36">
-            <label class="form-label" id="valueFromMyButton" for="name">Descrição</label>
-            <textarea
-             class="input_description" 
-             id="description" 
-             name="descricaoReserva" 
-             th:value="${r?.descricaoReserva}" ></textarea>
-             
-             <label class="form-label"> Periodo da Reserva </label> 
-				<select class="input" name="periodo">
-					<option
-						th:each="periodo : ${T(br.com.sp.senai.auditorio.auditorio.model.Periodo).values()}"
-						th:value="${periodo}" 
-						th:text="${periodo}"
-						th:selected="${periodo.toString() == r?.periodo?.toString()}"
-						></option>
-				</select>
-				<label class="form-label"> Defina a data</label>
-				 <input class="input"type="date" id="dato" name="data"
-				th:value="${r?.data}" 
-				onchange="alert(this.value)">
-            <label class="form-label" id="valueFromMyButton" for="count">Horário</label>
-            
+	<div class="content">
+		<div class="calendar-container">
+			<div class="calendar">
+				<div class="year-header">
+					<span class="left-button" id="prev"> &lang; </span> <span
+						class="year" id="label"></span> <span class="right-button"
+						id="next"> &rang; </span>
+				</div>
+				<table class="months-table">
+					<tbody>
+						<tr class="months-row">
+							<td class="month">Jan</td>
+							<td class="month">Fev</td>
+							<td class="month">Mar</td>
+							<td class="month">Abr</td>
+							<td class="month">Mai</td>
+							<td class="month">Jun</td>
+							<td class="month">Jul</td>
+							<td class="month">Ago</td>
+							<td class="month">Set</td>
+							<td class="month">Out</td>
+							<td class="month">Nov</td>
+							<td class="month">Dez</td>
+						</tr>
+					</tbody>
+				</table>
 
-            <select class="input"  name="tipo.id" id="count">
-              <option 
-              th:each="t : ${tipo}" 
-              th:text="${t?.nome}"
-              th:value="${t?.id}" 
-              th:selected="${t.id == r?.tipo?.id}"
-              selected="selected"></option>
-            </select>
+				<table class="days-table">
+					<td class="day">Seg</td>
+					<td class="day">Ter</td>
+					<td class="day">Qua</td>
+					<td class="day">Qui</td>
+					<td class="day">Sex</td>
+					<td class="day">Sab</td>
+					<td class="day">Dom</td>
+				</table>
+				<div class="frame">
+					<table class="dates-table">
+						<tbody class="tbody">
+						</tbody>
+					</table>
+				</div>
+				<button class="button" id="add-button">Adicionar evento</button>
+			</div>
+		</div>
+		<div class="events-container"></div>
+		<div class="dialog" id="dialog">
+			<h2 class="dialog-header">Adicionar novo evento</h2>
 
-            <input type="button" value="Cancelar" class="button" id="cancel-button">
-            <input type="submit" value="OK" class="button" id="ok-button">
-          </div>
-        </form>
-        
-    </div>
-  </div>
+			<form class="form" id="form" action="salvareserva" method="post">
+				<input type="hidden" name="id" th:value="${r?.id}" />
+				<input type="hidden" name="data" id="data" />
 
-  <!-- Dialog Box-->
-  
-  <script
-    src="https://code.jquery.com/jquery-3.6.0.js"
-    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous">
-  </script>
-  <script>
-    const url = 'http://localhost:8080/api/reserva'
+				<div class="form-container" align="center">
+					<label class="form-label" id="valueFromMyButton" for="name">Responsavel</label>
+					<input class="input" type="text" maxlength="36" name="nome"
+						th:value="${r?.nome}"> <label class="form-label"
+						id="valueFromMyButton" for="name">Descrição</label>
+					<textarea class="input_description" id="description"
+						name="descricaoReserva" th:value="${r?.descricaoReserva}"></textarea>
 
-  
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+					<label class="form-label"> Periodo da Reserva </label> <select
+						class="input" name="periodo">
+						<option
+							th:each="periodo : ${T(br.com.sp.senai.auditorio.auditorio.model.Periodo).values()}"
+							th:value="${periodo}" th:text="${periodo}"
+							th:selected="${periodo.toString() == r?.periodo?.toString()}"></option>
+					</select> <label class="form-label" id="valueFromMyButton" for="count">Motivo</label>
 
-    let fetchData = {
-        method: 'POST',
-        body: JSON.stringify(reserva),
-        headers: myHeaders
-    }
+					<select class="input" name="tipo.id" id="count">
+						<option th:each="t : ${tipo}" th:text="${t?.nome}"
+							th:value="${t?.id}" th:selected="${t.id == r?.tipo?.id}"
+							selected="selected"></option>
+					</select> <input type="button" value="Cancelar" class="button"
+						id="cancel-button"> <input type="submit" value="OK"
+						class="button" id="ok-button">
+				</div>
+			</form>
 
-    fetch(url, fetchData)
-        .then((resp) => resp.json())
-        .then((resposta) => {
-            console.log(resposta)
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+		</div>
+	</div>
+
+	<!-- Dialog Box-->
+
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous">
+		
+	</script>
 
 
-</script>
-  
-  <script src="../js/calendar_javascript.js"></script>
+	<script src="../js/calendar_javascript.js"></script>
 </body>
 </html>
