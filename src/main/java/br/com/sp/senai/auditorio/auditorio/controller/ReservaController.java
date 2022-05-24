@@ -35,6 +35,12 @@ public class ReservaController {
 		model.addAttribute("tipo", trRep.findAll());
 		return "reserva/cadReserva";
 	}
+	
+	@RequestMapping(value = "calendario", method = RequestMethod.GET)
+	private String formCalendario(Model model) {
+		model.addAttribute("tipo", trRep.findAll());
+		return "reserva/calendario";
+	}
 
 	// metodo de salvamento da agenda
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
@@ -43,18 +49,18 @@ public class ReservaController {
 		Reserva agendamento = repository.findByDataAndPeriodo(data, periodo) ;
 		
 		if (agendamento != null) {
-			return "redirect:reserva";
+			
+			return "redirect:calendario";
 		}
 		repository.save(reserva);
 		}catch (Exception e) {
 			attr.addFlashAttribute("mensagemErro", "Ao fazer uma reserva ouve um erro" + e.getMessage());	
 			System.out.println("erro");
+			return "redirect:calendario";
 		}
 				
-			
-		
-			
-		return "redirect:reserva";
+					
+		return "redirect:calendario";
 	}
 
 

@@ -30,7 +30,7 @@ function init_calendar(date) {
     // 35 é de (7 dias em uma semana) * (até 5 linhas de datas em um mês)
     for(var i=0; i<35+first_day; i++) {
         // Como alguns dos elementos estarão em branco, 
-        // precisa calcular a data real do índice
+        // Precisa calcular a data real do índice
         var day = i-first_day+1;
         // Se for domingo, faça uma nova linha
         if(i%7===0) {
@@ -77,6 +77,9 @@ function date_click(event) {
     $(".active-date").removeClass("active-date");
     $(this).addClass("active-date");
     show_events(event.data.events, event.data.month, event.data.day);
+   
+    input = document.querySelector(".active-date");
+    
 };
 
 // Manipulador de eventos para quando um mês é clicado
@@ -136,19 +139,23 @@ function new_event(event) {
     $("#ok-button").unbind().click({date: event.data.date}, function() {
         var date = event.data.date;
         var name = $("#name").val().trim();
-        var count = $("#count").find('option[selected]').text();
+        var description = $("#description").val().trim();
+        var count = $("#count option:selected").text();
         var day = parseInt($(".active-date").html());
         // Validação de formulário básico
         if(name.length === 0) {
             $("#name").addClass("error-input");
         }
-        else if(isNaN(count)) {
+        else if(count.length === 0) {
             $("#count").addClass("error-input");
+        }
+        else if(description.length === 0) {
+            $("#description").addClass("error-input");
         }
         else {
             $("#dialog").hide(250);
             console.log("new event");
-            new_event_json(name, count, date, day);
+            new_event_json(name, description, count, date, day);
             date.setDate(day);
             init_calendar(date);
         }
@@ -156,9 +163,10 @@ function new_event(event) {
 }
 
 // Adiciona um evento json a event_data
-function new_event_json(name, count, date, day) {
+function new_event_json(name, description, count, date, day) {
     var event = {
         "occasion": name,
+        "description": description,
         "invited_count": count,
         "year": date.getFullYear(),
         "month": date.getMonth()+1,
@@ -186,18 +194,21 @@ function show_events(events, month, day) {
         for(var i=0; i<events.length; i++) {
             var event_card = $("<div class='event-card'></div>");
             var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
-            var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+"</div>");
+            var event_count = $("<div class='event-count' >"+events[i]["invited_count"]+"</div><br>");
+            var event_description = $("<p class='descricao'>Descrição:</p><br><div class='event-description'>"+events[i]["description"]+"</div>");
             if(events[i]["cancelled"]===true) {
                 $(event_card).css({
                     "border-left": "10px solid #FF1744"
                 });
                 event_count = $("<div class='event-cancelled'>Cancelled</div>");
             }
-            $(event_card).append(event_name).append(event_count);
+            $(event_card).append(event_name).append(event_count).append(event_description);
             $(".events-container").append(event_card);
         }
     }
 }
+
+
 
 // Verifica se uma data específica tem algum evento
 function check_events(day, month, year) {
@@ -212,6 +223,7 @@ function check_events(day, month, year) {
     }
     return events;
 }
+
 
 // Dados fornecidos para eventos no formato JSON
 var event_data = {

@@ -28,7 +28,8 @@
 <body>
 	<h1>Formulário de Cadastro</h1>
 	<div>
-	<form action="save" method="post">
+	<script src="js/JavaScript"></script>
+	<form action="save" method="post" onsubmit="cadastrarUsuario">
 		<input type="hidden" name="id" th:value="${users?.id}"/>
 		
 		<h1>Cadastro de Users</h1>

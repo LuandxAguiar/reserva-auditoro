@@ -45,6 +45,7 @@ public class UsuarioRestController {
 		}
 	}
 	
+	
 	@Administrador
 	@RequestMapping("{id}")
 	public ResponseEntity<Usuario> getUser(@PathVariable("id") Long idUser){

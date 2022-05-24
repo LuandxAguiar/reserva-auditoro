@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../css/calendar_estilo.css">
+  <meta charset="utf-8">
+  <title>Calendário</title>
+  <meta name="description" content="Calendar">
+  <link rel="stylesheet" href="../css/calendar_estilo.css">
+
 </head>
+
 <body>
   <div class="content">
     <div class="calendar-container">
@@ -51,15 +53,90 @@
         <button class="button" id="add-button">Adicionar evento</button>
       </div>
     </div>
-    <div class="events-container">
+  <div class="events-container">
     </div>
-   
+    <div class="dialog" id="dialog">
+        <h2 class="dialog-header">Adicionar novo evento</h2>
+        
+        <form class="form" id="form" action="salvareserva" method="post">
+        <input type="hidden" name="id" th:value="${r?.id}" />
+       
+        
+          <div class="form-container" align="center">
+            <label class="form-label" id="valueFromMyButton" for="name">Nome do evento</label>
+            <input class="input" type="text" id="name" maxlength="36">
+            <label class="form-label" id="valueFromMyButton" for="name">Descrição</label>
+            <textarea
+             class="input_description" 
+             id="description" 
+             name="descricaoReserva" 
+             th:value="${r?.descricaoReserva}" ></textarea>
+             
+             <label class="form-label"> Periodo da Reserva </label> 
+				<select class="input" name="periodo">
+					<option
+						th:each="periodo : ${T(br.com.sp.senai.auditorio.auditorio.model.Periodo).values()}"
+						th:value="${periodo}" 
+						th:text="${periodo}"
+						th:selected="${periodo.toString() == r?.periodo?.toString()}"
+						></option>
+				</select>
+				<label class="form-label"> Defina a data</label>
+				 <input class="input"type="date" id="dato" name="data"
+				th:value="${r?.data}" 
+				onchange="alert(this.value)">
+            <label class="form-label" id="valueFromMyButton" for="count">Horário</label>
+            
+
+            <select class="input"  name="tipo.id" id="count">
+              <option 
+              th:each="t : ${tipo}" 
+              th:text="${t?.nome}"
+              th:value="${t?.id}" 
+              th:selected="${t.id == r?.tipo?.id}"
+              selected="selected"></option>
+            </select>
+
+            <input type="button" value="Cancelar" class="button" id="cancel-button">
+            <input type="submit" value="OK" class="button" id="ok-button">
+          </div>
+        </form>
+        
+    </div>
+  </div>
+
   <!-- Dialog Box-->
+  
   <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous">
   </script>
-  <script src="js/calendar_javascript.js"></script>
+  <script>
+    const url = 'http://localhost:8080/api/reserva'
+
+  
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let fetchData = {
+        method: 'POST',
+        body: JSON.stringify(reserva),
+        headers: myHeaders
+    }
+
+    fetch(url, fetchData)
+        .then((resp) => resp.json())
+        .then((resposta) => {
+            console.log(resposta)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+
+
+</script>
+  
+  <script src="../js/calendar_javascript.js"></script>
 </body>
 </html>
