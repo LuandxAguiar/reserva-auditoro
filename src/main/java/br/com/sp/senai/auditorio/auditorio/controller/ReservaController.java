@@ -1,8 +1,6 @@
 package br.com.sp.senai.auditorio.auditorio.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +33,11 @@ public class ReservaController {
 		model.addAttribute("tipo", trRep.findAll());
 		return "reserva/cadReserva";
 	}
-	
+
 	@RequestMapping(value = "calendario", method = RequestMethod.GET)
 	private String formCalendario(Model model) {
 		model.addAttribute("tipo", trRep.findAll());
+		model.addAttribute("reserva", repository.findAll());
 		return "reserva/calendario";
 	}
 
@@ -48,25 +47,21 @@ public class ReservaController {
 		System.out.println(reserva.getData());
 		System.out.println(reserva.getNome());
 		try {
-		Reserva agendamento = repository.findByDataAndPeriodo(data, periodo) ;
-		
-		if (agendamento != null) {
-			
-			return "redirect:calendario";
-		}
-		repository.save(reserva);
-		}catch (Exception e) {
-			attr.addFlashAttribute("mensagemErro", "Ao fazer uma reserva ouve um erro" + e.getMessage());	
+			Reserva agendamento = repository.findByDataAndPeriodo(data, periodo);
+
+			if (agendamento != null) {
+
+				return "redirect:calendario";
+			}
+			repository.save(reserva);
+		} catch (Exception e) {
+			attr.addFlashAttribute("mensagemErro", "Ao fazer uma reserva ouve um erro" + e.getMessage());
 			System.out.println("erro");
 			return "redirect:calendario";
 		}
-				
-					
+
 		return "redirect:calendario";
 	}
-
-
-
 
 	// listar as reservas realizadas
 	@RequestMapping("listareserva/{page}")
@@ -109,6 +104,12 @@ public class ReservaController {
 		Reserva reserva = repository.findById(id).get();
 		repository.delete(reserva);
 		return "redirect:listareserva/1";
+	}
+
+	@RequestMapping("buscar")
+	public String buscar(String buscar, Model model) {
+		model.addAttribute("reserva", repository.buscar(buscar));
+		return "calendario";
 	}
 
 }

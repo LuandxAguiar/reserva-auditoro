@@ -49,6 +49,7 @@
 						<tbody class="tbody">
 						</tbody>
 					</table>
+				
 				</div>
 				<button class="button" id="add-button">Adicionar evento</button>
 			</div>
@@ -56,6 +57,7 @@
 		<div class="events-container"></div>
 		<div class="dialog" id="dialog">
 			<h2 class="dialog-header">Adicionar novo evento</h2>
+			
 
 			<form class="form" id="form" action="salvareserva" method="post">
 				<input type="hidden" name="id" th:value="${r?.id}" />
@@ -85,11 +87,43 @@
 						id="cancel-button"> <input type="submit" value="OK"
 						class="button" id="ok-button">
 				</div>
+				
 			</form>
 
 		</div>
+		<div>
+		<table>
+			<thead>
+			 <form action="/buscar">
+	      	<table>
+	      <td>Busque aqui para saber Data ou Periodo</td>
+	      <td><input type="search"  name=buscar>
+	      <button type="submit">search </button>
+	      	</table>
+	      	
+	      	<table>
+	      </form>
+	      <thead>
+	      <tr>
+	      
+			<th>Data</th>
+			<th>Periodo</th>
+		</tr>
+			</thead>
+			<tbody>
+		<tr th:each="r:${reserva}">
+			
+			<td th:text="${r?.data}" />
+			<td th:text="${r?.periodo}" />
+		</tr>
+			
+			</tbody>
+		</table>
+	
 	</div>
-
+	</div>
+	
+	
 	<!-- Dialog Box-->
 
 	<script src="https://code.jquery.com/jquery-3.6.0.js"
