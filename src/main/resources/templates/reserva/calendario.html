@@ -54,7 +54,6 @@
 				<button class="button" id="add-button">Adicionar evento</button>
 			</div>
 		</div>
-		<div class="events-container"></div>
 		<div class="dialog" id="dialog">
 			<h2 class="dialog-header">Adicionar novo evento</h2>
 			
@@ -91,17 +90,35 @@
 			</form>
 
 		</div>
-		<div>
+		
+	</div>
+	
+	
+	<!-- Dialog Box-->
+
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous">
+		
+	</script>
+
+
+	<script src="../js/calendar_javascript.js"></script>
+	
+	
+	<div class="divList" style="    background: white;
+    text-align: center;
+    margin: 12%">
 		<table>
 			<thead>
 			 <form action="/buscar">
 	      	<table>
-	      <td>Busque aqui para saber Data ou Periodo</td>
+	      <td style="margin-left: 35%;">Busque aqui para saber Data ou Periodo</td>
 	      <td><input type="search"  name=buscar>
 	      <button type="submit">search </button>
 	      	</table>
 	      	
-	      	<table>
+	      	<table style="    margin-left: 35%;">
 	      </form>
 	      <thead>
 	      <tr>
@@ -119,20 +136,12 @@
 			
 			</tbody>
 		</table>
-	
+		</form>
+		</thead>
+
+		</table>
 	</div>
-	</div>
 	
-	
-	<!-- Dialog Box-->
-
-	<script src="https://code.jquery.com/jquery-3.6.0.js"
-		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-		crossorigin="anonymous">
-		
-	</script>
-
-
-	<script src="../js/calendar_javascript.js"></script>
+	</html>
 </body>
 </html>

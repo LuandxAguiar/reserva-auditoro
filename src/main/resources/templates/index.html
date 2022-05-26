@@ -20,29 +20,7 @@
     const ul = document.getElementById('reserva')
     const url = 'http://localhost:8080'
     
-    fetch(url)
-        .then((resp) => resp.json())
-        .then(data => {
-            let reserva = data
-            return reserva.map((reserva) => {
-                let li = createNode('li')
-                
-                let span = createNode('span')
-                span.innerHTML = `
-                	${reserva.nome} | Endereço: ${reserva.descricaoReserva}
-                	Tipo : ${tipo}`
-                
-                append(li, span)
-          
-                
-                
-                append(ul, li)
-            })
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-
+  
     function createNode(element) {
         return document.createElement(element)
     }

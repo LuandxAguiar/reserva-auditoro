@@ -11,7 +11,7 @@ import br.com.sp.senai.auditorio.auditorio.model.Reserva;
 
 public interface ReservaRepository extends PagingAndSortingRepository<Reserva, Long>{
 		
-	public Reserva findByDataAndPeriodo(String data, Enum<Periodo>p);
+	public Reserva findByDataAndPeriodo(String data, Periodo p);
 	
 	@Query("SELECT b FROM Reserva b WHERE b.data LIKE %:b% OR b.periodo LIKE %:b% ORDER BY b.data")
 	public List<Reserva> buscar(@Param("b") String geral);

@@ -1,6 +1,10 @@
 package br.com.sp.senai.auditorio.auditorio.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +30,10 @@ public class ReservaController {
 	private ReservaRepository repository;
 	@Autowired
 	private TipoReservaRepository trRep;
-
-	// request e metodo para cadastrar uma reserva
-	@RequestMapping(value = "reserva", method = RequestMethod.GET)
-	private String form(Model model) {
-		model.addAttribute("tipo", trRep.findAll());
-		return "reserva/cadReserva";
-	}
-
-	@RequestMapping(value = "calendario", method = RequestMethod.GET)
+	
+	LocalDate dataAtual = LocalDate.now();
+	
+	@RequestMapping(value = "agendamento", method = RequestMethod.GET)
 	private String formCalendario(Model model) {
 		model.addAttribute("tipo", trRep.findAll());
 		model.addAttribute("reserva", repository.findAll());
@@ -44,23 +43,37 @@ public class ReservaController {
 	// metodo de salvamento da agenda
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
 	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr) throws Exception {
-		System.out.println(reserva.getData());
-		System.out.println(reserva.getNome());
 		try {
 			Reserva agendamento = repository.findByDataAndPeriodo(data, periodo);
-
+			
 			if (agendamento != null) {
+				
+				
+				Date dataAtual = new Date();
+				String date1 = new SimpleDateFormat("dd/MM/yyyy").format(dataAtual);
+		    
+				SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+				Date dataformatada = formato.parse(data);
+				
+				if(dataformatada.before(dataAtual)) {
+					//verificar
+				}
+				
+				if (agendamento.getPeriodo().equals(Periodo.TODOS)) {
 
-				return "redirect:calendario";
+					return "redirect:agendamento";
+			}
+			
+				return "redirect:agendamento";
 			}
 			repository.save(reserva);
 		} catch (Exception e) {
 			attr.addFlashAttribute("mensagemErro", "Ao fazer uma reserva ouve um erro" + e.getMessage());
 			System.out.println("erro");
-			return "redirect:calendario";
+			return "redirect:agendamento";
 		}
 
-		return "redirect:calendario";
+		return "redirect:agendamento";
 	}
 
 	// listar as reservas realizadas
@@ -109,7 +122,7 @@ public class ReservaController {
 	@RequestMapping("buscar")
 	public String buscar(String buscar, Model model) {
 		model.addAttribute("reserva", repository.buscar(buscar));
-		return "calendario";
+		return "reserva/calendario";  
 	}
 
 }
