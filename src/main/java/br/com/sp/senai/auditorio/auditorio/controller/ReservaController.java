@@ -2,6 +2,7 @@ package br.com.sp.senai.auditorio.auditorio.controller;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.threeten.bp.format.DateTimeFormatter;
+
+import com.google.api.client.util.DateTime;
 
 import br.com.sp.senai.auditorio.auditorio.model.Periodo;
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
@@ -30,9 +34,9 @@ public class ReservaController {
 	private ReservaRepository repository;
 	@Autowired
 	private TipoReservaRepository trRep;
-	
+
 	LocalDate dataAtual = LocalDate.now();
-	
+
 	@RequestMapping(value = "agendamento", method = RequestMethod.GET)
 	private String formCalendario(Model model) {
 		model.addAttribute("tipo", trRep.findAll());
@@ -43,37 +47,36 @@ public class ReservaController {
 	// metodo de salvamento da agenda
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
 	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr) throws Exception {
-		try {
+		
 			Reserva agendamento = repository.findByDataAndPeriodo(data, periodo);
-			
+				System.out.println(data);
 			if (agendamento != null) {
-				
-				
-				Date dataAtual = new Date();
-				String date1 = new SimpleDateFormat("dd/MM/yyyy").format(dataAtual);
-		    
-				SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-				Date dataformatada = formato.parse(data);
-				
-				if(dataformatada.before(dataAtual)) {
-					//verificar
-				}
-				
-				if (agendamento.getPeriodo().equals(Periodo.TODOS)) {
 
-					return "redirect:agendamento";
+				return "redirect:agendamento";
+
 			}
 			
-				return "redirect:agendamento";
+			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa      " + data);
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	 
+	   
+	        
+			LocalDateTime dataSalva = LocalDateTime.parse(data);
+			LocalDateTime dataAtual = LocalDateTime.now();
+			
+			if(dataSalva.isBefore(dataAtual)) {
+				
 			}
+				
+			
 			repository.save(reserva);
-		} catch (Exception e) {
-			attr.addFlashAttribute("mensagemErro", "Ao fazer uma reserva ouve um erro" + e.getMessage());
+			
+		
 			System.out.println("erro");
 			return "redirect:agendamento";
-		}
+		
 
-		return "redirect:agendamento";
+	
 	}
 
 	// listar as reservas realizadas
@@ -122,7 +125,7 @@ public class ReservaController {
 	@RequestMapping("buscar")
 	public String buscar(String buscar, Model model) {
 		model.addAttribute("reserva", repository.buscar(buscar));
-		return "reserva/calendario";  
+		return "reserva/calendario";
 	}
 
 }

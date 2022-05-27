@@ -26,6 +26,7 @@ function init_calendar(date) {
 	// Defina a data como 1 para encontrar o primeiro dia do mês
 	date.setDate(1);
 	var first_day = date.getDay();
+	
 	// 35+firstDay é o número de elementos de data a serem adicionados à tabela de datas
 	// 35 é de (7 dias em uma semana) * (até 5 linhas de datas em um mês)
 	for (var i = 0; i < 35 + first_day; i++) {
@@ -323,16 +324,16 @@ var event_data = {
 };
 
 const months = [
-	"Janeiro",
-	"Fevereiro",
-	"Março",
-	"Abril",
-	"Maio",
-	"Junho",
-	"Julho",
-	"Agosto",
-	"Setembro",
-	"Outubro",
-	"Novembro",
-	"Dezembro"
+	"01",
+	"02",
+	"03",
+	"04",
+	"05",
+	"06",
+	"07",
+	"08",
+	"09",
+	"10",
+	"11",
+	"12"
 ];
