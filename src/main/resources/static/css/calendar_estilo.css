@@ -17,17 +17,10 @@ body {
     height: 500px;
     position: relative;
     margin: 20px auto;
-    background: #52A0FD;
-    background: -moz-linear-gradient(right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-    background: -webkit-linear-gradient(right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-    background: linear-gradient(to left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);    
     border-radius: 3px;
-    box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    -moz-box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    -webkit-box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-/*  Exibição de eventos */
+/*  Exibiï¿½ï¿½o de eventos */
 .events-container {
     overflow-y: scroll;
     height: 100%;
@@ -76,12 +69,12 @@ body {
     text-align: right;
 }
 
-/*  Wrapper de calendário */
+/*  Wrapper de calendï¿½rio */
 .calendar-container  { 
     float: left;
     position: relative;
     margin: 0px auto; 
-    height: 129%;
+    height: 115%;
     background: #fff;
     font: 13px Helvetica, Arial, san-serif; 
     display: inline-block; 
@@ -95,7 +88,7 @@ body {
     display: table;
 }
 
-/* Cabeçalho do calendário */
+/* Cabeï¿½alho do calendï¿½rio */
 .year-header { 
     background: #52A0FD;
     background: -moz-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
@@ -251,11 +244,12 @@ body {
     box-shadow: 0 2px 8px RGBA(130, 180, 255, .9);
 }
 
-/* caixa de diálogo de entrada */
+/* caixa de diï¿½logo de entrada */
 .dialog{
     z-index: 5;
     background: #fff;
     position:absolute;
+    height: 115%;
     width:415px;
   
     left:387px;
@@ -307,6 +301,72 @@ body {
 }
 .error-input {
     border-color: #FF1744;
+}
+.divList{    
+    background-color: #fff; 
+    padding: 10px;
+    margin-top: 150px;
+}
+.form-data-periodo{
+    width: 50%;
+    min-width: 250px;
+    display: inline-block;
+    vertical-align: top;
+}
+.button-buscar{
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 25px;
+    padding: 8px;
+    transition: .2s ease all;
+    color: white;
+    border: none;
+    box-shadow: -1px 10px 20px #9BC6FD;
+    background: #52A0FD;
+    background: -moz-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
+    background: -webkit-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
+    background: linear-gradient(to right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
+}
+.input-buscar{
+    border: none;
+    border-bottom: 1px solid black;
+    width: 200px;
+    margin-right: 10px;
+}
+.input-buscar:focus{
+    transition: border-color 250ms;
+    border-color: #00C9FB;
+    outline: none;
+}
+.lista-data-periodo{
+    width: 50%;
+    min-width: 250px;
+    display: inline-block;
+    vertical-align: top;
+}
+.lista{
+    margin: auto;
+    border: 2px solid black;
+    border-collapse: collapse;   
+}
+.lista thead{
+    background-color: #FF1744;
+    color: white;
+}
+.lista thead tr th{
+    border: 1px solid black;
+}
+.lista tbody tr td{
+    text-align: center;
+    border: 1px solid black;
+}
+.aumentar{
+    padding-left: 55px;
+    padding-right: 55px;
 }
 
 /* Comprimidos e menores */
@@ -384,9 +444,6 @@ body {
     }
     .event-name, .event-count, .event-description, .event-cancelled {
         font-size: .8rem;
-    }
-    .descricao{
-        
     }
     .add-button{
         bottom: 10px;

@@ -3,8 +3,8 @@ package br.com.sp.senai.auditorio.auditorio.controller;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -18,9 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.threeten.bp.format.DateTimeFormatter;
-
-import com.google.api.client.util.DateTime;
 
 import br.com.sp.senai.auditorio.auditorio.model.Periodo;
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
@@ -51,26 +48,36 @@ public class ReservaController {
 			Reserva agendamento = repository.findByDataAndPeriodo(data, periodo);
 				System.out.println(data);
 			if (agendamento != null) {
-
+				attr.addFlashAttribute("mensagemErro","Verificar campos");
 				return "redirect:agendamento";
 
 			}
 			
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa      " + data);
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	 
-	   
-	        
-			LocalDateTime dataSalva = LocalDateTime.parse(data);
-			LocalDateTime dataAtual = LocalDateTime.now();
 			
-			if(dataSalva.isBefore(dataAtual)) {
-				
+			
+			SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+			Date dataAtual = new Date();
+			Date dataSalva = formato.parse(data);
+			
+			String[] g = data.split(data);
+			for (int i = 0; i < g.length; i++) {
+				System.out.println(g[i]);
 			}
+			System.out.println(dataAtual);
+			System.out.println(dataSalva);
+			
+			
+			 if(dataSalva.before(dataAtual)) {
+				attr.addFlashAttribute("mensagemErro", "verificar data");
+				System.out.println("Erro da data");
+				return "redirect:agendamento";
+			}
+		
 				
 			
 			repository.save(reserva);
-			
+			attr.addFlashAttribute("mensagemSucesso", "Sua data foi salva");
 		
 			System.out.println("erro");
 			return "redirect:agendamento";
