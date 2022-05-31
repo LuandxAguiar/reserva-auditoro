@@ -13,6 +13,6 @@ public interface ReservaRepository extends PagingAndSortingRepository<Reserva, L
 		
 	public Reserva findByDataAndPeriodo(String data, Periodo p);
 	
-	@Query("SELECT b FROM Reserva b WHERE b.data LIKE %:b% OR b.periodo LIKE %:b% ORDER BY b.data")
+	@Query("SELECT b FROM Reserva b WHERE b.data LIKE %:b% ")
 	public List<Reserva> buscar(@Param("b") String geral);
 }

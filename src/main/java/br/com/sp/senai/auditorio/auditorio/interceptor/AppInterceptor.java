@@ -18,6 +18,8 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import br.com.sp.senai.auditorio.auditorio.annotation.Administrador;
 import br.com.sp.senai.auditorio.auditorio.annotation.Professor;
+import br.com.sp.senai.auditorio.auditorio.annotation.Publico;
+import br.com.sp.senai.auditorio.auditorio.model.Hierarquia;
 import br.com.sp.senai.auditorio.auditorio.model.Usuario;
 import br.com.sp.senai.auditorio.auditorio.rest.UsuarioRestController;
 
@@ -40,19 +42,23 @@ public class AppInterceptor implements HandlerInterceptor {
 			if (uri.startsWith("/api")) {
 				String token = null;
 				if (metodo.getMethodAnnotation(Administrador.class) != null) {
+
 					try {
-						if (usuario.getHierarquia(token)) {
-							token = request.getHeader("Authorization");
-						
+
+						token = request.getHeader("Authorization");
+
 						Algorithm algorito = Algorithm.HMAC256(UsuarioRestController.SECRET);
 						JWTVerifier verifier = JWT.require(algorito).withIssuer(UsuarioRestController.EMISSOR).build();
 						DecodedJWT jwt = verifier.verify(token);
 						Map<String, Claim> claims = jwt.getClaims();
 						System.out.println(claims);
-						return true;
-						}else {
-							return false;
+						Hierarquia h = Hierarquia.values()[Integer.parseInt(claims.get("hierarquia").toString())];
+						if(h == Hierarquia.ADMIN) {
+							// entrou !
+							return true;
 						}
+						return false;
+
 					} catch (Exception e) {
 						e.printStackTrace();
 						if (token == null) {
@@ -62,8 +68,37 @@ public class AppInterceptor implements HandlerInterceptor {
 						}
 						return false;
 					}
+				} else if (metodo.getMethodAnnotation(Professor.class) != null) {
+					try {
+
+						token = request.getHeader("Authorization");
+
+						Algorithm algorito = Algorithm.HMAC256(UsuarioRestController.SECRET);
+						JWTVerifier verifier = JWT.require(algorito).withIssuer(UsuarioRestController.EMISSOR).build();
+						DecodedJWT jwt = verifier.verify(token);
+						Map<String, Claim> claims = jwt.getClaims();
+						System.out.println(claims);
+						
+						Hierarquia h = Hierarquia.values()[Integer.parseInt(claims.get("hierarquia").toString())];
+						if(h == Hierarquia.DOCENTE) {
+							// entrou !
+							return true;
+						}
+						
+						return false;
+					} catch (Exception e) {
+						e.printStackTrace();
+						if (token == null) {
+							response.sendError(HttpStatus.UNAUTHORIZED.value(), e.getMessage());
+						} else {
+							response.sendError(HttpStatus.FORBIDDEN.value(), e.getMessage());
+						}
+						return false;
+
+					}
+
 				} else {
-					if (metodo.getMethodAnnotation(Professor.class) != null) {
+					if (metodo.getMethodAnnotation(Publico.class) != null) {
 						return true;
 					}
 					if (session.getAttribute("usuarioLogado") != null) {
@@ -78,5 +113,5 @@ public class AppInterceptor implements HandlerInterceptor {
 		}
 		return false;
 	}
-	
+
 }

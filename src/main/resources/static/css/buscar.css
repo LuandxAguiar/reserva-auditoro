@@ -1,0 +1,26 @@
+.lista-data-periodo{
+    width: 50%;
+    min-width: 250px;
+    display: inline-block;
+    vertical-align: top;
+}
+.lista{
+    margin: auto;
+    border: 2px solid black;
+    border-collapse: collapse;   
+}
+.lista thead{
+    background-color: #FF1744;
+    color: white;
+}
+.lista thead tr th{
+    border: 1px solid black;
+}
+.lista tbody tr td{
+    text-align: center;
+    border: 1px solid black;
+}
+.aumentar{
+    padding-left: 55px;
+    padding-right: 55px;
+}

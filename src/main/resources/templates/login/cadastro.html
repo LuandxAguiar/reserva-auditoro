@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://thymeleaf.org">
     <head>
         <title>Cadastro</title>
         <meta charset="utf-8">
@@ -38,7 +38,8 @@
                     </label>
 		        </div>
                 <input type="submit"class="button" value="Cadastrar">
-                </div>							
+                </div>	
+                 <span style="margin-top: 350px;"><div th:replace="fragments/mensagem" ></div></span>						
 		</form>		
 	</body>
 </html>

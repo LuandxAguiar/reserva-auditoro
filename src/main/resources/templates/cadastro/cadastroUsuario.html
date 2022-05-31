@@ -37,14 +37,23 @@
 		<label>Email</label><input type="text" name="email" th:value="${users?.email}"> 
 		 <label>senha</label><input
 			type="text" name="senha" th:value="${users?.senha}"> 
-			<label>nif</label><input type="text" name="nif" th:value="${users?.nif}">
-			<br>
-			<label>ADM</label><input type="radio" name="permission">
-			<label>OPP</label><input type="radio" name="permission">
-			<br>
+			<label>nif</label><input type="text" name="nif" th:value="${users?.nif}
+			"
+
+			
+			>
+			</select> <label> Nível de acesso </label> 
+				<select name="hierarquia">
+					<option
+						th:each="hierarquia : ${T(br.com.sp.senai.auditorio.auditorio.model.Hierarquia).values()}"
+						th:value="${hierarquia}" 
+						th:text="${hierarquia}"
+						th:selected="${hierarquia.toString() == r?.hierarquia?.toString()}"
+						></option>
+				</select>
 		<button type="submit"> Enviar</button>
 		
-		
+		 <span style="margin-top: 350px;"><div th:replace="fragments/mensagem" ></div></span>	
 	</form>
 	</div>
 

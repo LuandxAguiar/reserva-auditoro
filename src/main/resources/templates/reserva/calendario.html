@@ -105,34 +105,18 @@
 
 	<script src="../js/calendar_javascript.js"></script>
 	
-	<span style="margin-top: 350px;"><div th:replace="fragments/mensagem" ></div></span>
+	
 	<div class="divList">
 
 		<div class="form-data-periodo">
-		  
+		  <span style="margin-top: 350px;"><div th:replace="fragments/mensagem" ></div></span>
 			<form action="/buscar" >
 				<label>Buscar por data ou período:</label><br>
 				<input type="search" name="buscar" class="input-buscar"> 
 				<input type="submit" value="Buscar" class="button-buscar">	
 			</form>
-		</div><!--
-
-		--><div class="lista-data-periodo">
-			<table class="lista">
-				<thead>
-					<tr>
-						<th class="aumentar">Data</th>
-						<th class="aumentar">Período</th>
-					</tr>	
-				</thead>
-				<tbody>
-					<tr th:each="r:${reserva}" >			
-						<td th:text="${r?.data}" />
-						<td th:text="${r?.periodo}" />		
-					</tr>			
-				</tbody>	
-			</table>
-		</div>	
+		
+</div>
 	</div>
 	</html>
 </body>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Lista de Evento</title>
+<link rel="stylesheet"
+	href="css/buscar.css">
+</head>
+<body>
+	<button onclick="history.go(-1);">Voltar para o Agendamento</button>
+	<div class="lista-data-periodo">
+			<table class="lista">
+				<thead>
+					<tr>
+						<th class="aumentar">Data</th>
+						<th class="aumentar">Período</th>
+						<th class="aumentar">Responsável</th>
+					</tr>	
+				</thead>
+				<tbody>
+					<tr th:each="r:${reserva}" >			
+						<td th:text="${r?.data}" />
+						<td th:text="${r?.periodo}" />	
+						<td th:text="${r?.nome}" />		
+					</tr>			
+				</tbody>	
+			</table>
+			<ul class="page">
+		<li th:class="${page == 1 ? 'disabled' : 'waves-effect'}"><a
+			th:href="${page > 1 ? page - 1 : '#'}"><i
+				class="material-icons">>--</i></a></li>
+		<li th:class="${page == p ? 'active purple' : 'waves-effect'}"
+			th:each="p:${numPaginas}"><a th:href="${p}"><span th:text="${p}"></span></a></li>
+
+		<li th:class="${page == totalPaginas ? 'disabled' : 'waves-effect'}"><a
+			th:href="${page < totalPaginas ? page + 1 : '#'}"><i
+				class="material-icons">></i></a></li>
+
+	</ul>
+		</div>	
+
+</body>
+</html>

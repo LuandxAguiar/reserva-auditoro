@@ -38,9 +38,11 @@ public class UsuarioController {
 
 	// salvar no banco
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String salvar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attr, String nif) {
 		System.out.println("passou");
-
+			
+		
+	
 		// verificando se houve Erro na valid
 		if (result.hasErrors()) {
 			attr.addFlashAttribute("mensagemErro", "verificar os campos nvoamente...");
@@ -71,7 +73,7 @@ public class UsuarioController {
 		attr.addFlashAttribute("mensagemSucesso", "Administrador cadastrado com sucesso ID:"+usuario.getId());	
 		}catch (Exception e) {
 			System.out.println("erro ao cadastrar");
-			attr.addFlashAttribute("mensagemErro", "Verificar os campos novamente:..."+e.getMessage());
+			attr.addFlashAttribute("mensagemErro", "Verificar os campos novamente, Este Nif já existe");
 		}
 		return "redirect:cadastro";
 	}

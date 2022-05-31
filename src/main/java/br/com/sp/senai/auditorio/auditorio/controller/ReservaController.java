@@ -3,6 +3,7 @@ package br.com.sp.senai.auditorio.auditorio.controller;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.sp.senai.auditorio.auditorio.annotation.Administrador;
 import br.com.sp.senai.auditorio.auditorio.model.Periodo;
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
 import br.com.sp.senai.auditorio.auditorio.repository.ReservaRepository;
 import br.com.sp.senai.auditorio.auditorio.repository.TipoReservaRepository;
+
 
 @Controller
 public class ReservaController {
@@ -33,7 +36,8 @@ public class ReservaController {
 	private TipoReservaRepository trRep;
 
 	LocalDate dataAtual = LocalDate.now();
-
+	
+	@Administrador
 	@RequestMapping(value = "agendamento", method = RequestMethod.GET)
 	private String formCalendario(Model model) {
 		model.addAttribute("tipo", trRep.findAll());
@@ -42,11 +46,18 @@ public class ReservaController {
 	}
 
 	// metodo de salvamento da agenda
+	
+	@Administrador
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
 	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr) throws Exception {
 		
 			Reserva agendamento = repository.findByDataAndPeriodo(data, periodo);
 				System.out.println(data);
+				
+				if(agendamento.getPeriodo() == periodo.TODOS ) {
+					attr.addFlashAttribute("mensagemErro","Verificar campos");
+					return "redirect:agendamento";
+				}
 			if (agendamento != null) {
 				attr.addFlashAttribute("mensagemErro","Verificar campos");
 				return "redirect:agendamento";
@@ -56,16 +67,20 @@ public class ReservaController {
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa      " + data);
 			
 			
+		
+	
 			SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 			Date dataAtual = new Date();
+			System.out.println(dataAtual+"aqui");
+			try {
 			Date dataSalva = formato.parse(data);
+		
 			
-			String[] g = data.split(data);
-			for (int i = 0; i < g.length; i++) {
-				System.out.println(g[i]);
-			}
-			System.out.println(dataAtual);
-			System.out.println(dataSalva);
+			
+			
+		
+			System.out.println(dataAtual+"aqui");
+			System.out.println(dataSalva+"aqui");
 			
 			
 			 if(dataSalva.before(dataAtual)) {
@@ -82,14 +97,19 @@ public class ReservaController {
 			System.out.println("erro");
 			return "redirect:agendamento";
 		
-
-	
+			}catch (Exception e) {
+				attr.addFlashAttribute("mensagemErro", "data não pode ser salva");
+				return "redirect:agendamento";
+			}
+			
 	}
 
 	// listar as reservas realizadas
+	
+	@Administrador
 	@RequestMapping("listareserva/{page}")
 	public String listaReserva(Model model, @PathVariable("page") int page) {
-		PageRequest pageble = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.ASC, "data"));
+		PageRequest pageble = PageRequest.of(page - 1, 5, Sort.by(Sort.Direction.ASC, "data"));
 
 		Page<Reserva> pagina = repository.findAll(pageble);
 
@@ -105,14 +125,16 @@ public class ReservaController {
 		}
 		// fazendo a model para valores serem add
 
-		model.addAttribute("numPagina", numPaginas);
-		model.addAttribute("totalPages", totalPaginas);
-		model.addAttribute("pagAtual", page);
+		model.addAttribute("numPaginas", numPaginas);
+		model.addAttribute("totalPaginas", totalPaginas);
+		model.addAttribute("page", page);
 
 		return "listas/listaReserva";
 	}
 
 	// alterar a reserva
+	
+	@Administrador
 	@RequestMapping("alteraReserva")
 	public String alteraReserva(Long id, Model model) {
 		// busca a reserva pelo ID possibilitando a alteração
@@ -120,7 +142,8 @@ public class ReservaController {
 		model.addAttribute("r", reserva);
 		return "forward:calendario";
 	}
-
+	
+	@Administrador
 	@RequestMapping("exclueReserva")
 	public String excluir(Long id) {
 		// excluir a reserva pelo ID
@@ -128,11 +151,13 @@ public class ReservaController {
 		repository.delete(reserva);
 		return "redirect:listareserva/1";
 	}
-
-	@RequestMapping("buscar")
+	
+	@Administrador
+	@RequestMapping(value = "buscar", method = RequestMethod.GET )
 	public String buscar(String buscar, Model model) {
 		model.addAttribute("reserva", repository.buscar(buscar));
-		return "reserva/calendario";
+		
+		return "listas/listarBuscar";
 	}
 
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.com.sp.senai.auditorio.auditorio.annotation.Administrador;
 import br.com.sp.senai.auditorio.auditorio.model.TipoReserva;
 import br.com.sp.senai.auditorio.auditorio.repository.TipoReservaRepository;
 
@@ -21,17 +22,20 @@ public class TipoReservaController {
 	@Autowired
 	private TipoReservaRepository repository;
 	
+	@Administrador
 	@RequestMapping(value = "tiporeservacad", method = RequestMethod.GET)
 	private String form() {
 		return "cadastro/tipoReserva";
 	}
 	
+	@Administrador
 	@RequestMapping(value = "salvatiporeserva", method = RequestMethod.POST)
 	public String salvar (TipoReserva tr) {
 		repository.save(tr);
 		return "redirect:tiporeservacad";
 	}
 	
+	@Administrador
 	@RequestMapping("listatiporeserva/{page}")
 	public String list(Model model, @PathVariable("page")int page) {
 		//criar uma pageble para informar os parametros da pagina 
@@ -63,6 +67,7 @@ public class TipoReservaController {
 		
 	}
 	
+	@Administrador
 	@RequestMapping("excluirTipo")
 	public String exclua (Long id) {
 		TipoReserva excluirTipo = repository.findById(id).get();
