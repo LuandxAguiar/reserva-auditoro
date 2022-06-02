@@ -1,4 +1,4 @@
-  /* MENU */
+/* MENU */
   /* bootstrap dropdown hover menu*/
 
 
@@ -277,142 +277,96 @@
     font-style: italic;
     }
 
-    .senai{
-      text-align: center;
-    }
-  
-    /*# sourceMappingURL=index.css.map */
-    
-    .login-box {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      width: 400px;
-      padding: 40px;
-      transform: translate(-50%, -50%);
-      background: #f33737;
-      box-sizing: border-box;
-      box-shadow: 0 15px 25px rgba(0,0,0,.6);
-      border-radius: 10px;
-    }
-    
-    .login-box h2 {
-      margin: 0 0 30px;
-      padding: 0;
-      color: #fff;
-      text-align: center;
-    }
-    
-    .login-box .user-box {
-      position: relative;
-    }
-    
-    .login-box .user-box input {
-      width: 100%;
-      padding: 10px 0;
-      font-size: 16px;
-      color: #fff;
-      margin-bottom: 30px;
-      border: none;
-      border-bottom: 1px solid #fff;
-      outline: none;
-      background: transparent;
-    }
-    .login-box .user-box label {
-      position: absolute;
-      top:0;
-      left: 0;
-      padding: 10px 0;
-      font-size: 16px;
-      color: #fff;
-      pointer-events: none;
-      transition: .5s;
-    }
-    
-    .login-box .user-box input:focus ~ label,
-    .login-box .user-box input:valid ~ label {
-      top: -20px;
-      left: 0;
-      color: #ffffff;
-      font-size: 12px;
-    }
 
-  /* button*/
-
-  .custom-btn {
-    width: 130px;
-    height: 40px;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px 25px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 500;
-    background: transparent;
+.divLista{
+    padding-top: 40px;
+    margin: auto;
+}
+.lista{
+    margin: auto;
+    border: 2px solid black;
+    border-collapse: collapse;   
+}
+.lista thead{
+    background-color: #FF1744;
+    color: white;
+}
+.lista thead tr th{
+    border: 1px solid black;
+}
+.lista tbody tr td{
+    text-align: center;
+    border: 1px solid black;
+    background-color: white;
+}
+.lista tbody tr td a{
+    color: black;
+    padding: 4px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.lista tbody tr td a:hover{
+    color: #FF1744;
     cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
-    outline: none;
-  }
-  /* 15 */
-.btn-15 {
-  background: #f33737;
-  border: none;
-  z-index: 1;
-}
-.btn-15:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  background-color: #fff;
-  border-radius: 5px;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  transition: all 0.3s ease;
-}
-.btn-15:hover {
-  color: #f33737;
-  background-color: #fff;
-}
-.btn-15:hover:after {
-  left: 0;
-  width: 100%;
-}
-.btn-15:active {
-  top: 2px;
-}
-footer{
-  width: 100%;  
-  position: absolute;
-  bottom: 0;
 }
 
-.icones {
-  background-color: #e30613;
-  text-align: center;
-  margin-top: 40px;
+
+.aumentar{
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
-.icones a img{
-  width: 25px;
-  padding: 10px;
+.descricao{
+    padding: 20px;
+    padding-left: 83px;
+    padding-right: 83px;
 }
-.info-senai{
-  padding: 10px;
-  text-align: center;
-  background-color: #850000;
-  color: white;
-}
-.direitos{
-  padding: 10px;
-  text-align: center;
-  background-color: #e30613;
-  color: white;
-}
+
+
+footer{
+    width: 100%;  
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .icones {
+    background-color: #e30613;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .icones a img{
+    width: 25px;
+    padding: 10px;
+  }
+  .info-senai{
+    padding: 10px;
+    text-align: center;
+    background-color: #850000;
+    color: white;
+  }
+  .direitos{
+    padding: 10px;
+    text-align: center;
+    background-color: #e30613;
+    color: white;
+  }
+  
+  .pagination{
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .pagination a {
+    color: black;
+    padding: 4px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 20px;
+  }
+  .pagination a:hover {    
+    color: #FF1744;
+    cursor: pointer;
+  }
+
+  
+  

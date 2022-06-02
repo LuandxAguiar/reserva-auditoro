@@ -8,6 +8,15 @@
 </head>
 
 <body>
+		<nav>
+		<div class="nav-wrapper">
+			<ul class="menu">
+				<li> <h1> <span class="senai">SENAI</span> </h1> </li>            
+			</ul>
+		</div>
+	</nav>
+	
+
 	<div class="content">
 		<div class="calendar-container">
 			<div class="calendar">
@@ -111,13 +120,77 @@
 		<div class="form-data-periodo">
 		  <span style="margin-top: 350px;"><div th:replace="fragments/mensagem" ></div></span>
 			<form action="/buscar" >
-				<label>Buscar por data ou período:</label><br>
+				<label>Buscar por data</label><br>
 				<input type="search" name="buscar" class="input-buscar"> 
 				<input type="submit" value="Buscar" class="button-buscar">	
 			</form>
 		
 </div>
 	</div>
+		<nav class="main-menu">
+	<ul>
+		
+		<li>
+			<a href="#home">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Home</b>
+				</span>
+			</a>
+		
+		</li>
+
+		<li>
+			<a href="#login">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Login</b>
+				</span>
+			</a>
+		
+		</li>
+
+		<li>
+			<a href="#cadastro">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Cadastro</b>
+				</span>
+			</a>
+		
+		</li>
+		
+	</ul>
+
+	<ul class="logout">
+		<li>
+		<a href="#">
+				<i class="fa fa-power-off fa-2x"></i>
+				<span class="nav-text">
+					<b>Deslogar</b>
+				</span>
+			</a>
+		</li>  
+	</ul>
+</nav>
+<footer>
+	<div class="icones">
+		 <a href="https://www.facebook.com/senainacional/" target="_blank" title="Link de acesso ao facebook do SENAI"><img src="../imagens/facebook.png"></a>
+		<a href="https://twitter.com/senainacional?lang=en" target="_blank" title="Link de acesso ao twitter do SENAI"><img src="../imagens/twitter.png"></a>
+		<a href="https://www.youtube.com/c/senaibrasil" target="_blank" title="Link de acesso ao youtube do SENAI"><img src="../imagens/youtube.png"></a>
+		<a href="https://br.linkedin.com/company/senai-nacional" target="_blank" title="Link de acesso ao linkedin do SENAI"><img src="../imagens/linkedin.png"></a>
+		<a href="https://www.instagram.com/senai_nacional/" target="_blank" title="Link de acesso ao instagram do SENAI"><img src="../imagens/instagram.png"></a>
+	</div>
+	<div class="info-senai">
+		<p>O Serviço Nacional de Aprendizagem Industrial (SENAI) tem como objetivo<br> 
+			estimular a inovação industrial por meio da educação, consultoria,<br>
+			pesquisa aplicada e serviços técnicos e tecnológicos que são decisivos<br> 
+			para a competitividade das empresas do Estado e do Brasil.</p>			
+	</div>
+	<div class="direitos">
+		<small>Copyright 2022 © Todos os direitos reservados.</small>
+	</div>		
+</footer>
 	</html>
 </body>
 </html>

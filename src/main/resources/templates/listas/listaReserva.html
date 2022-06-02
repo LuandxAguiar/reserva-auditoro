@@ -2,69 +2,121 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Lista de Reservas</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
-	media="screen,projection" />
+<title>Lista de Reserva</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="../css/lista_estilo.css">
 </head>
 <body>
 
-	<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Responsavel</th>
-				<th>Data</th>
-				<th>Descrição</th>
-				<th>periodo</th>
-				<th>Motivo da reserva</th>
-				<th>Editar</th>
-				<th>Cancelar</th>
+	<nav>
+		<div class="nav-wrapper">
+			<ul class="menu">
+				<li> <h1> <span class="senai">SENAI</span> </h1> </li>            
+			</ul>
+		</div>
+	</nav>
 
-			</tr>
+	<nav class="main-menu">
+	<ul>
+		
+		<li>
+			<a href="#home">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Home</b>
+				</span>
+			</a>
+		
+		</li>
 
-		</thead>
-		<tbody>
-			<tr th:each="r:${reserva}">
+		<li>
+			<a href="#login">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Login</b>
+				</span>
+			</a>
+		
+		</li>
 
-				<td th:text="${r.id}" />
-				<td th:text="${r.nome}" />
-				<td th:text="${r.data}" />
-				<td th:text="${r.descricaoReserva}" />
-				<td th:text="${r?.periodo}">
-				<td th:text="${r?.tipo?.nome}"/>
-				<td><a th:href="@{/alteraReserva(id=${r.id})}"><i
-						class="material-icons">create</i> </a></td>
-
-				<td><a th:href="@{/exclueReserva(id=${r.id})}"> <i
-						class="material-icons">delete_forever</i>
-				</a></td>
-
-			</tr>
-
-		</tbody>
-
-
-	</table>
-
-	<ul class="pagination">
-		<li th:class="${pagAtual == 1 ? 'disabled' : 'waves-effect'}"><a
-			th:href="${pagAtual > 1 ? pagAtual - 1 : '#'}"><i
-				class="material-icons">chevron_left</i></a></li>
-		<li th:class="${pagAtual == p ? 'active purple' : 'waves-effect'}"
-			th:each="p:${numPag}"><a th:href="${p}"><span th:text="${p}"></span></a></li>
-
-		<li th:class="${pagAtual == totalPages ? 'disabled' : 'waves-effect'}"><a
-			th:href="${pagAtual < totalPages ? pagAtual + 1 : '#'}"><i
-				class="material-icons">chevron_right</i></a></li>
-
+		<li>
+			<a href="#cadastro">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Cadastro</b>
+				</span>
+			</a>
+		
+		</li>
+		
 	</ul>
+
+	<ul class="logout">
+		<li>
+		<a href="#">
+				<i class="fa fa-power-off fa-2x"></i>
+				<span class="nav-text">
+					<b>Deslogar</b>
+				</span>
+			</a>
+		</li>  
+	</ul>
+</nav>
+
+	<div class="divLista">
+		<table class="lista">
+			<thead>
+				<tr>
+					<th class="aumentar">ID</th>
+					<th class="aumentar">Responsável</th>
+					<th class="aumentar">Data</th>
+					<th class="descricao">Descrição</th>
+					<th class="aumentar">Período</th>
+					<th class="aumentar">Motivo da reserva</th>
+					<th class="aumentar">Editar</th>
+					<th class="aumentar">Cancelar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="r:${reserva}">
+					<td th:text="${r.id}" />
+					<td th:text="${r.nome}" />
+					<td th:text="${r.data}" />
+					<td th:text="${r.descricaoReserva}" />
+					<td th:text="${r?.periodo}">
+					<td th:text="${r?.tipo?.nome}"/>
+					<td><a th:href="@{/alteraReserva(id=${r.id})}"><i class="material-icons">create</i> </a></td>
+					<td><a th:href="@{/exclueReserva(id=${r.id})}"> <i class="material-icons">delete_forever</i> </a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	
+
+	<div class="pagination">
+		<a><b>&lt;</b></a>
+		<a><b>&gt;</b></a>
+	</div>
+
+	<footer>
+        <div class="icones">
+         <a href="https://www.facebook.com/senainacional/" target="_blank" title="Link de acesso ao facebook do SENAI"><img src="../imagens/facebook.png"></a>
+		<a href="https://twitter.com/senainacional?lang=en" target="_blank" title="Link de acesso ao twitter do SENAI"><img src="../imagens/twitter.png"></a>
+		<a href="https://www.youtube.com/c/senaibrasil" target="_blank" title="Link de acesso ao youtube do SENAI"><img src="../imagens/youtube.png"></a>
+		<a href="https://br.linkedin.com/company/senai-nacional" target="_blank" title="Link de acesso ao linkedin do SENAI"><img src="../imagens/linkedin.png"></a>
+		<a href="https://www.instagram.com/senai_nacional/" target="_blank" title="Link de acesso ao instagram do SENAI"><img src="../imagens/instagram.png"></a>
+        </div>
+        <div class="info-senai">
+            <p>O Serviço Nacional de Aprendizagem Industrial (SENAI) tem como objetivo<br> 
+                estimular a inovação industrial por meio da educação, consultoria,<br>
+                pesquisa aplicada e serviços técnicos e tecnológicos que são decisivos<br> 
+                para a competitividade das empresas do Estado e do Brasil.</p>			
+        </div>
+        <div class="direitos">
+            <small>Copyright 2022 © Todos os direitos reservados.</small>
+        </div>		
+    </footer>
 </body>
 </html>

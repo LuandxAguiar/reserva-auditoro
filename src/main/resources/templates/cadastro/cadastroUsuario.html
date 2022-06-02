@@ -1,61 +1,116 @@
-<!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Formulario de Cadasatro</title>
-<style >
-	*{
-		text-align: center;
-		margin:auto;
-		
-	}
-	form{
-		background-color: cyan;
-		border: solid 4px black;
-		padding: 15px;
-	}
-	div{
-		background-color: aquamarine;
-		width: 30%;
-	}
-	td{
-	padding: 1.2em;
-	}
-
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/cadastro_estilo.css" rel="stylesheet">
+    <title>Página de Cadastro</title>
 </head>
-
 <body>
-	<h1>Formulário de Cadastro</h1>
-	<div>
-	<script src="js/JavaScript"></script>
-	<form action="save" method="post" onsubmit="cadastrarUsuario">
-		<input type="hidden" name="id" th:value="${users?.id}"/>
-		
-		<h1>Cadastro de Users</h1>
-		<label>nome</label><input type="text" name="nome" th:value="${users?.nome}">
-		<label>Email</label><input type="text" name="email" th:value="${users?.email}"> 
-		 <label>senha</label><input
-			type="text" name="senha" th:value="${users?.senha}"> 
-			<label>nif</label><input type="text" name="nif" th:value="${users?.nif}
-			"
+    <nav>
+            <div class="nav-wrapper">
+                <ul class="menu">
+                    <li> <h1> <span class="senai">SENAI</span> </h1> </li>            
+                </ul>
+            </div>
+        </nav>
+        <nav class="main-menu">
+        <ul>
+            
+            <li>
+                <a href="#home">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        <b>Home</b>
+                    </span>
+                </a>
+            
+            </li>
 
-			
-			>
-			</select> <label> Nível de acesso </label> 
-				<select name="hierarquia">
-					<option
-						th:each="hierarquia : ${T(br.com.sp.senai.auditorio.auditorio.model.Hierarquia).values()}"
-						th:value="${hierarquia}" 
-						th:text="${hierarquia}"
-						th:selected="${hierarquia.toString() == r?.hierarquia?.toString()}"
-						></option>
-				</select>
-		<button type="submit"> Enviar</button>
-		
-		 <span style="margin-top: 350px;"><div th:replace="fragments/mensagem" ></div></span>	
-	</form>
+            <li>
+                <a href="#login">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        <b>Login</b>
+                    </span>
+                </a>
+            
+            </li>
+
+            <li>
+                <a href="#cadastro">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        <b>Cadastro</b>
+                    </span>
+                </a>
+            
+            </li>
+            
+        </ul>
+
+        <ul class="logout">
+            <li>
+            <a href="#">
+                    <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        <b>Deslogar</b>
+                    </span>
+                </a>
+            </li>  
+        </ul>
+    </nav>
+    
+    <div class="login-box">
+        <h2>Cadastro</h2>
+        <form>
+                <div class="user-box">
+                    <input type="text" name="" required="">
+                    <label>Nome</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" name="" required="">
+                    <label>NIF</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" name="" required="">
+                    <label>Email</label>
+                </div>
+                <div class="user-box">
+                    <input type="password" name="" required="">
+                    <label>Senha</label>
+                </div>
+
+                <button type="submit" class="custom-btn btn-15">Cadastrar</button>							
+            <!--
+                <div th:if="${param.error}">
+                    Senha ou Username Invalidos!
+                </div>
+
+                <div th:if="${param.logout}">
+                    Você está desconectado!
+                </div>
+                -->
+        </form>
+    </div>
+    <footer>
+	<div class="icones">
+		<a href="https://www.facebook.com/senainacional/" target="_blank" title="Link de acesso ao facebook do SENAI"><img src="imagens/facebook.png"></a>
+		<a href="https://twitter.com/senainacional?lang=en" target="_blank" title="Link de acesso ao twitter do SENAI"><img src="imagens/twitter.png"></a>
+		<a href="https://www.youtube.com/c/senaibrasil" target="_blank" title="Link de acesso ao youtube do SENAI"><img src="imagens/youtube.png"></a>
+		<a href="https://br.linkedin.com/company/senai-nacional" target="_blank" title="Link de acesso ao linkedin do SENAI"><img src="imagens/linkedin.png"></a>
+		<a href="https://www.instagram.com/senai_nacional/" target="_blank" title="Link de acesso ao instagram do SENAI"><img src="imagens/instagram.png"></a>
 	</div>
+	<div class="info-senai">
+		<p>O Serviço Nacional de Aprendizagem Industrial (SENAI) tem como objetivo<br> 
+			estimular a inovação industrial por meio da educação, consultoria,<br>
+			pesquisa aplicada e serviços técnicos e tecnológicos que são decisivos<br> 
+			para a competitividade das empresas do Estado e do Brasil.</p>			
+	</div>
+	<div class="direitos">
+		<small>Copyright 2022 © Todos os direitos reservados.</small>
+	</div>		
+</footer>
 
 </body>
 </html>

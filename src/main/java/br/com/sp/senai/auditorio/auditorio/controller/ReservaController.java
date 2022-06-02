@@ -50,13 +50,11 @@ public class ReservaController {
 
 	@Administrador
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
-	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr, Periodo pera)
+	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr, Periodo p)
 			throws Exception {
 
 		Reserva agendamento = repository.findByDataAndPeriodo(data, periodo);
 
-		
-		
 		if (agendamento != null) {
 
 			attr.addFlashAttribute("mensagemErro", "Verificar campos");
@@ -69,12 +67,29 @@ public class ReservaController {
 		dataSalva.setTime(formato.parse(data));
 		dataAtual.add(Calendar.DATE, -1);
 
+		for (Reserva res : repository.findByData(data)) {
+
+			if (res.getPeriodo() != Periodo.TODOS) {
+
+				return "redirect:agendamento";
+
+			}
+
+			else {
+				if (res.getPeriodo() == Periodo.MANHA || res.getPeriodo() == Periodo.TARDE
+						|| res.getPeriodo() == Periodo.NOITE) {
+					repository.deleteById(res.getId());
+					return "redirect:agendamento";
+				}
+			}
+		}
+
 		if (dataSalva.before(dataAtual)) {
 			attr.addFlashAttribute("mensagemErro", "verificar data");
 			System.out.println("Erro da data");
 			return "redirect:agendamento";
 		}
-			
+
 		repository.save(reserva);
 		attr.addFlashAttribute("mensagemSucesso", "Sua data foi salva");
 		return "redirect:agendamento";
@@ -116,7 +131,7 @@ public class ReservaController {
 		// busca a reserva pelo ID possibilitando a alteração
 		Reserva reserva = repository.findById(id).get();
 		model.addAttribute("r", reserva);
-		return "forward:calendario";
+		return "forward:agendamento";
 	}
 
 	@Administrador

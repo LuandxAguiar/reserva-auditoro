@@ -2,25 +2,77 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Lista de Tipos de Reserva</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
-	media="screen,projection" />
+<title>Lista de Tipo Reserva</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="../css/lista_estilo.css">
 </head>
 <body>
+
+	<nav>
+		<div class="nav-wrapper">
+			<ul class="menu">
+				<li> <h1> <span class="senai">SENAI</span> </h1> </li>            
+			</ul>
+		</div>
+	</nav>
+
+	<nav class="main-menu">
+	<ul>
+		
+		<li>
+			<a href="#home">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Home</b>
+				</span>
+			</a>
+		
+		</li>
+
+		<li>
+			<a href="#login">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Login</b>
+				</span>
+			</a>
+		
+		</li>
+
+		<li>
+			<a href="#cadastro">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Cadastro</b>
+				</span>
+			</a>
+		
+		</li>
+		
+	</ul>
+
+	<ul class="logout">
+		<li>
+		<a href="#">
+				<i class="fa fa-power-off fa-2x"></i>
+				<span class="nav-text">
+					<b>Deslogar</b>
+				</span>
+			</a>
+		</li>  
+	</ul>
+</nav>
 	<table>
+		<div class="divLista">
+		<table class="lista">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Cancelar</th>
+				<th class="aumentar">ID</th>
+				<th class="aumentar">Nome</th>
+				<th class="aumentar" >Cancelar</th>
 
 			</tr>
 
@@ -41,7 +93,9 @@
 
 
 	</table>
-
+	
+	</table>
+	</div>
 	<ul class="pagination">
 		<li th:class="${pagAtual == 1 ? 'disabled' : 'waves-effect'}"><a
 			th:href="${pagAtual > 1 ? pagAtual - 1 : '#'}"><i
@@ -54,5 +108,70 @@
 				class="material-icons">chevron_right</i></a></li>
 
 	</ul>
+	
+		<nav class="main-menu">
+	<ul>
+		
+		<li>
+			<a href="#home">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Home</b>
+				</span>
+			</a>
+		
+		</li>
+
+		<li>
+			<a href="#login">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Login</b>
+				</span>
+			</a>
+		
+		</li>
+
+		<li>
+			<a href="#cadastro">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text">
+					<b>Cadastro</b>
+				</span>
+			</a>
+		
+		</li>
+		
+	</ul>
+
+	<ul class="logout">
+		<li>
+		<a href="#">
+				<i class="fa fa-power-off fa-2x"></i>
+				<span class="nav-text">
+					<b>Deslogar</b>
+				</span>
+			</a>
+		</li>  
+	</ul>
+</nav>
+<footer>
+	<div class="icones">
+		 <a href="https://www.facebook.com/senainacional/" target="_blank" title="Link de acesso ao facebook do SENAI"><img src="../imagens/facebook.png"></a>
+		<a href="https://twitter.com/senainacional?lang=en" target="_blank" title="Link de acesso ao twitter do SENAI"><img src="../imagens/twitter.png"></a>
+		<a href="https://www.youtube.com/c/senaibrasil" target="_blank" title="Link de acesso ao youtube do SENAI"><img src="../imagens/youtube.png"></a>
+		<a href="https://br.linkedin.com/company/senai-nacional" target="_blank" title="Link de acesso ao linkedin do SENAI"><img src="../imagens/linkedin.png"></a>
+		<a href="https://www.instagram.com/senai_nacional/" target="_blank" title="Link de acesso ao instagram do SENAI"><img src="../imagens/instagram.png"></a>
+	</div>
+	<div class="info-senai">
+		<p>O Serviço Nacional de Aprendizagem Industrial (SENAI) tem como objetivo<br> 
+			estimular a inovação industrial por meio da educação, consultoria,<br>
+			pesquisa aplicada e serviços técnicos e tecnológicos que são decisivos<br> 
+			para a competitividade das empresas do Estado e do Brasil.</p>			
+	</div>
+	<div class="direitos">
+		<small>Copyright 2022 © Todos os direitos reservados.</small>
+	</div>		
+</footer>
 </body>
 </html>
