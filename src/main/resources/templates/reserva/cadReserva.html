@@ -14,8 +14,10 @@
 				<label>Data da Reserva</label> <input type="date" name="data"
 					th:value="${r?.data}" > <label>Descrição</label> <input
 					type="text" name="descricaoReserva"
-					th:value="${r?.descricaoReserva}"> <label>Motivo da
-					Reserva </label> <select name="tipo.id">
+					th:value="${r?.descricaoReserva}"> 
+					<label>Motivo da
+					Reserva </label> 
+					<select name="tipo.id">
 					<option th:each="t : ${tipo}" th:text="${t?.nome}"
 						th:value="${t?.id}" th:selected="${t.id == r?.tipo?.id}"
 						selected="selected"></option>

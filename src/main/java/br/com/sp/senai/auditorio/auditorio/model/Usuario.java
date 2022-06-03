@@ -23,23 +23,20 @@ public class Usuario {
 	@Column(nullable = false, unique = true)
 	@NotEmpty
 	private String nif;
-	private String hierarquia;
+	private Hierarquia hierarquia;
 
-	
-	
 	public void setSenha(String senha) {
 		this.senha = HashUtil.hash(senha);
 	}
-	
-	
-	//Métod que "seta" o hash na senha 
-		public void setSenhaComHash(String hash) {
-				this.senha = hash;
-		}
-		
-	public boolean getHierarquia(String token) {
-		this.hierarquia = token;
-		return true;
+
+	// Métod que "seta" o hash na senha
+	public void setSenhaComHash(String hash) {
+		this.senha = hash;
 	}
-	
+
+	/*
+	 * public boolean getHierarquia(String token) { this.hierarquia = token; return
+	 * true; }
+	 */
+
 }

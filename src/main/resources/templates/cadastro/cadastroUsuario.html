@@ -1,4 +1,4 @@
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,19 +65,19 @@
         <h2>Cadastro</h2>
         <form>
                 <div class="user-box">
-                    <input type="text" name="" required="">
+                    <input type="text" name="nome" th:value="${users?.nome}" required="">
                     <label>Nome</label>
                 </div>
                 <div class="user-box">
-                    <input type="text" name="" required="">
+                    <input type="text" name="nif" th:value="${users?.nif}" required="">
                     <label>NIF</label>
                 </div>
                 <div class="user-box">
-                    <input type="text" name="" required="">
+                    <input type="text" name="email" th:value="${users?.email}"required="">
                     <label>Email</label>
                 </div>
                 <div class="user-box">
-                    <input type="password" name="" required="">
+                    <input type="password" name="senha" th:value="${users?.senha}" required="">
                     <label>Senha</label>
                 </div>
 

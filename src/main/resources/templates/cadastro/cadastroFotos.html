@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>cadastro Fotos</title>
+</head>
+<body>
+
+	<form action="salvarFoto" method="post">
+
+
+
+		<div>
+
+			<select name="reserva.id">
+				<option th:each="r : ${reserva}" th:text="${r?.nome}"
+					th:value="${r?.id}" th:selected="${r?.id == fot?.r?.id}"
+					selected="selected"></option>
+			</select>
+			
+			 <label class="lbt" for="arquivo">Enviar arquivo</label> <input
+				class="nms" type="file" name="fileFotos" id="arquivo" multiple
+				accept="image/*">
+
+			<!-- erro esta abaixo  -->
+		</div>
+
+			<input type="hidden" name="id" th:value="${fot?.id}">
+			<input type="hidden" th:value="${fot?.fotos}">
+		  	<input type="submit" value="salvar">
+		<div th:if="${fot?.fotos?.length > 0 }">
+
+			<h6>Fotos Cadastradas</h6>
+			<div class="fotos">
+				<ul id="listFoto">
+					<li th:each="fotos, i : ${fot?.verFotos()}"><a
+						th:href="${fotos}" target="blank"> <img th:src="${fotos}"
+							width="50px;"></a> <a
+						th:href="@{/excluirFotos(idRest = ${fot?.id}, numFoto =${i.index} )}"><i
+							class="material-icons">delete_forever</i> </a></li>
+				</ul>
+			</div>
+
+		</div>
+	</form>
+
+</body>
+</html>

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sp.senai.auditorio.auditorio.annotation.Administrador;
+import br.com.sp.senai.auditorio.auditorio.annotation.Professor;
 import br.com.sp.senai.auditorio.auditorio.model.Periodo;
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
 import br.com.sp.senai.auditorio.auditorio.repository.ReservaRepository;
@@ -49,6 +50,7 @@ public class ReservaController {
 	// metodo de salvamento da agenda
 
 	@Administrador
+	@Professor
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
 	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr, Periodo p)
 			throws Exception {
@@ -98,6 +100,7 @@ public class ReservaController {
 	// listar as reservas realizadas
 
 	@Administrador
+	@Professor
 	@RequestMapping("listareserva/{page}")
 	public String listaReserva(Model model, @PathVariable("page") int page) {
 		PageRequest pageble = PageRequest.of(page - 1, 100, Sort.by(Sort.Direction.ASC, "data"));
@@ -126,6 +129,7 @@ public class ReservaController {
 	// alterar a reserva
 
 	@Administrador
+	@Professor
 	@RequestMapping("alteraReserva")
 	public String alteraReserva(Long id, Model model) {
 		// busca a reserva pelo ID possibilitando a alteração
@@ -144,6 +148,7 @@ public class ReservaController {
 	}
 
 	@Administrador
+	@Professor
 	@RequestMapping(value = "buscar", method = RequestMethod.GET)
 	public String buscar(String buscar, Model model) {
 		model.addAttribute("reserva", repository.buscar(buscar));
