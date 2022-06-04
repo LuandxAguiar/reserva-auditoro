@@ -82,7 +82,7 @@ public class UsuarioController {
 		return "redirect:cadastro";
 	}
 
-	@Professor
+	
 	@Administrador
 	@RequestMapping("lista/{page}")
 	public String list(Model model, @PathVariable("page") int page) {
@@ -152,7 +152,7 @@ public class UsuarioController {
 			// salva o adm na sessão
 			session.setAttribute("usuarioLogado", user);
 			session.setAttribute("nivel", user.getHierarquia());
-			return "redirect:lista/1";
+			return "redirect:agendamento";
 		}
 		// logout
 

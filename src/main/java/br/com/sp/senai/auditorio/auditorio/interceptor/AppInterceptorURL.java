@@ -31,45 +31,20 @@ public class AppInterceptorURL implements HandlerInterceptor {
 
 		if (handler instanceof HandlerMethod) {
 			HandlerMethod metodo = (HandlerMethod) handler;
-			System.out.println("Passou aqui 1 !");
 			if (uri.startsWith("/")) {
-				System.out.println("Passou aqui 2 !");
 				System.out.println("Session 	" + session.getAttribute("nivel"));
+				if (metodo.getMethodAnnotation(Administrador.class) != null && session.getAttribute("nivel") == Hierarquia.ADMIN) {
+					return true;
 
-				if (metodo.getMethodAnnotation(Administrador.class) != null) {
-					System.out.println("Passou aqui 3 !");
-					if (session.getAttribute("nivel") == Hierarquia.ADMIN) {
-						System.out.println("Passou aqui ADMIIIIIIIIIIIINNNNN if else !");
-						return true;
-					}
-
-					if (Hierarquia.ADMIN == null) {
-						response.sendError(HttpStatus.UNAUTHORIZED.value());
-					} else {
-						response.sendError(HttpStatus.FORBIDDEN.value());
-					}
-					return false;
-
-				} else if (metodo.getMethodAnnotation(Professor.class) != null) {
-					System.out.println("Passou aqui 5 !");
-					if (session.getAttribute("nivel") == Hierarquia.DOCENTE) {
-						System.out.println("Passou aqui Docente if else !");
-						return true;
-					}
-
-					if (Hierarquia.DOCENTE == null) {
-						response.sendError(HttpStatus.UNAUTHORIZED.value());
-					} else {
-						response.sendError(HttpStatus.FORBIDDEN.value());
-					}
-					return false;
-
+				} else if (metodo.getMethodAnnotation(Professor.class) != null && session.getAttribute("nivel") == Hierarquia.DOCENTE) {
+					return true;
+				} else if (metodo.getMethodAnnotation(Publico.class) != null) {
+					return true;
 				}
 
-				return true;
+				return false;
 
 			} else {
-				System.out.println("Passou aqui !");
 
 				if (metodo.getMethodAnnotation(Publico.class) != null) {
 					System.out.println("Tá aqui ");

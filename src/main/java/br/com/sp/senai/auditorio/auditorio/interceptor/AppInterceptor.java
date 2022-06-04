@@ -7,29 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.HandlerInterceptor;
-
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.DecodedJWT;
-
-import br.com.sp.senai.auditorio.auditorio.annotation.Administrador;
-import br.com.sp.senai.auditorio.auditorio.annotation.Professor;
-import br.com.sp.senai.auditorio.auditorio.annotation.Publico;
-import br.com.sp.senai.auditorio.auditorio.model.Hierarquia;
-import br.com.sp.senai.auditorio.auditorio.model.Usuario;
-import br.com.sp.senai.auditorio.auditorio.rest.UsuarioRestController;
-
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -81,7 +58,7 @@ public class AppInterceptor implements HandlerInterceptor {
 							// entrou !
 							return true;
 						}
-						return false;
+						return true;
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -90,8 +67,10 @@ public class AppInterceptor implements HandlerInterceptor {
 						} else {
 							response.sendError(HttpStatus.FORBIDDEN.value(), e.getMessage());
 						}
-						return false;
+						return true;
+						
 					}
+					
 				} else if (metodo.getMethodAnnotation(Professor.class) != null) {
 					try {
 

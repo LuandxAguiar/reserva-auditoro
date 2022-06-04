@@ -39,6 +39,7 @@ public class ReservaController {
 
 	LocalDate dataAtual = LocalDate.now();
 
+	@Professor
 	@Administrador
 	@RequestMapping(value = "agendamento", method = RequestMethod.GET)
 	private String formCalendario(Model model) {
@@ -48,7 +49,7 @@ public class ReservaController {
 	}
 
 	// metodo de salvamento da agenda
-
+	
 	@Administrador
 	@Professor
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
@@ -70,28 +71,43 @@ public class ReservaController {
 		dataAtual.add(Calendar.DATE, -1);
 
 		for (Reserva res : repository.findByData(data)) {
+			// repository.deleteById(res.getId());
+			if (res.getData() != null && res.getPeriodo() != Periodo.TODOS) {
+				repository.save(reserva);
 
-			if (res.getPeriodo() != Periodo.TODOS) {
+			} else if (res.getData() != null && res.getPeriodo() == Periodo.MANHA) {
+				repository.deleteById(res.getId());
 
+				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
+				return "redirect:agendamento";
+
+			} else if (res.getData() != null && res.getPeriodo() == Periodo.TARDE) {
+				repository.deleteById(res.getId());
+
+				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
+				return "redirect:agendamento";
+
+			} else if (res.getData() != null && res.getPeriodo() == Periodo.NOITE) {
+				repository.deleteById(res.getId());
+
+				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
 				return "redirect:agendamento";
 
 			}
 
-			else {
-				if (res.getPeriodo() == Periodo.MANHA || res.getPeriodo() == Periodo.TARDE
-						|| res.getPeriodo() == Periodo.NOITE) {
-					repository.deleteById(res.getId());
-					return "redirect:agendamento";
-				}
-			}
+			return "redirect:agendamento";
+
 		}
 
+		// PEGAR A DATA E FAZER A COMPARAÇÃO 
+		//PARA NÃO SALVAR DIA QUE JA PASSOU 
+		// 
 		if (dataSalva.before(dataAtual)) {
 			attr.addFlashAttribute("mensagemErro", "verificar data");
 			System.out.println("Erro da data");
 			return "redirect:agendamento";
 		}
-
+		//ADICIONA RESERVA 
 		repository.save(reserva);
 		attr.addFlashAttribute("mensagemSucesso", "Sua data foi salva");
 		return "redirect:agendamento";

@@ -27,8 +27,8 @@ public class ReservaRestCotroller {
 	private ReservaRepository repository;
 	
 	//lista menor 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public Iterable<Reserva> getResera(){
+	@RequestMapping(value = "index", method = RequestMethod.GET)
+	public Iterable<Reserva> getReserva(){
 		
 		return repository.findAll();
 	}
@@ -47,7 +47,7 @@ public class ReservaRestCotroller {
 					}
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = " ", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> criarUsuario(@RequestBody Reserva reserva){
 		//insere usuario no banco 
 		//

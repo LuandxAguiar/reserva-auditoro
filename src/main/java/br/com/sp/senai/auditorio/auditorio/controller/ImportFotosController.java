@@ -58,7 +58,7 @@ public class ImportFotosController {
 			}
 
 		}
-		// guardar na variavel bar as fotos
+		// guardar na variavel reserva as fotos
 		fotos.setFotos(foto);
 		repository.save(fotos);
 		return "redirect:cadastreFotos";
@@ -67,7 +67,7 @@ public class ImportFotosController {
 	@RequestMapping("alterandoFotos")
 	public String alterare(Long idRest, Model model) {
 		ImportFotos fot = repository.findById(idRest).get();
-		model.addAttribute("fot", fot);
+		model.addAttribute("reserva", resRepository.findAll());
 		return "forward:cadastreFotos";
 	}
 
@@ -84,7 +84,7 @@ public class ImportFotosController {
 		// salva no banco
 		repository.save(fot);
 		// coloca o bar na model
-		model.addAttribute("importFot", fot);
+		model.addAttribute("fots", fot);
 		return "forward:formularioBar";
 	}
 	

@@ -12,8 +12,9 @@
 
 		<div>
 
-			<select name="reserva.id">
-				<option th:each="r : ${reserva}" th:text="${r?.nome}"
+	<p th:value="${r}">a</p>
+			<select name="r.id">
+				<option th:each="r : ${r}"  th:text="${r?.descricaoReserva}"
 					th:value="${r?.id}" th:selected="${r?.id == fot?.r?.id}"
 					selected="selected"></option>
 			</select>
