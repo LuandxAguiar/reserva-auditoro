@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sp.senai.auditorio.auditorio.annotation.Administrador;
+import br.com.sp.senai.auditorio.auditorio.annotation.Publico;
 import br.com.sp.senai.auditorio.auditorio.model.Erro;
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
 import br.com.sp.senai.auditorio.auditorio.repository.ReservaRepository;
@@ -26,13 +28,14 @@ public class ReservaRestCotroller {
 	private ReservaRepository repository;
 	
 	//lista menor 
-	@RequestMapping(value = " ", method = RequestMethod.GET)
+	@Publico
+	@RequestMapping(value = "evento", method = RequestMethod.GET)
 	public Iterable<Reserva> getReserva(){
 		
 		return repository.findAll();
 	}
 	
-	
+	@Administrador
 	@RequestMapping("/{id}")
 	public ResponseEntity<Reserva> getReserva(@PathVariable("id") Long idReserva){
 		//tentado
@@ -45,8 +48,8 @@ public class ReservaRestCotroller {
 						return ResponseEntity.notFound().build();
 					}
 	}
-
-	@RequestMapping(value = " ", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@Administrador
+	@RequestMapping(value = "salvarEvento", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> criarUsuario(@RequestBody Reserva reserva){
 		//insere usuario no banco 
 		//

@@ -42,7 +42,9 @@ public class AppInterceptorURL implements HandlerInterceptor {
 				} else if (metodo.getMethodAnnotation(Publico.class) != null) {
 					return true;
 				}
-
+				
+				
+				response.sendError(HttpStatus.FORBIDDEN.value(), "Proibido");
 				return false;
 			
 			} else {
@@ -53,7 +55,6 @@ public class AppInterceptorURL implements HandlerInterceptor {
 				
 				response.sendRedirect("/");
 				return false;
-				
 
 			}
 			

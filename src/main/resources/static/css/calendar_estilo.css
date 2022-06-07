@@ -97,7 +97,19 @@ font-size:20px;
   left:0;
   bottom:0;
   }
-
+.caixa{
+    padding: 15px;
+    font-family: Arial !important;
+    width: 20%;
+    float: left;
+    background: linear-gradient(to right, #FB0000 80%, #FB0000 100%);
+    margin-left: 50px;
+    margin-top: 180px;
+    display: inline-block;
+    color:#ffffff;
+    border-radius: 15px;
+    box-shadow: 10px 5px 5px #979797;
+}
 .no-touch .scrollable.hover {
 overflow-y:hidden;
 }
