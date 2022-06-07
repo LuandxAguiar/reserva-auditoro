@@ -1,4 +1,3 @@
-/* MENU */
   /* bootstrap dropdown hover menu*/
 
 
@@ -253,7 +252,7 @@
     }
     
     .nav-wrapper {
-    background-color: #e30613;
+  	background-color: white;
     }
     
     .menu {
@@ -357,16 +356,30 @@ footer{
   }
 
   .pagination a {
-    color: black;
-    padding: 4px 16px;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 20px;
-  }
+  	bottom: px;
+	margin-left: 42.5%;
+	background-color: #ffffff;
+	border-radius: 50px;
+	z-index: 1000;
+	background-color: gold;
+	margin-top: 15%;
+	width: 10.9%;
+}
+  
   .pagination a:hover {    
     color: #FF1744;
     cursor: pointer;
   }
+ 
 
-  
-  
+.page{
+	bottom: px;
+	margin-left: 42.5%;
+	background-color: #ffffff;
+	border-radius: 50px;
+	z-index: 1000;
+	background-color: gold;
+	margin-top: 15%;
+	width: 10.9%;
+	
+}

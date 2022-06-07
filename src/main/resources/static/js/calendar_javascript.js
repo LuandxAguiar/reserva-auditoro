@@ -26,7 +26,6 @@ function init_calendar(date) {
 	// Defina a data como 1 para encontrar o primeiro dia do mês
 	date.setDate(1);
 	var first_day = date.getDay();
-	
 	// 35+firstDay é o número de elementos de data a serem adicionados à tabela de datas
 	// 35 é de (7 dias em uma semana) * (até 5 linhas de datas em um mês)
 	for (var i = 0; i < 35 + first_day; i++) {
@@ -46,10 +45,6 @@ function init_calendar(date) {
 		else {
 			var curr_date = $("<td class='table-date'>" + day + "</td>");
 			var events = check_events(day, month + 1, year);
-			if (today === day && $(".active-date").length === 0) {
-				curr_date.addClass("active-date");
-				show_events(events, months[month], day);
-			}
 			// Se esta data tiver algum evento, estilize-a com .event-date
 			if (events.length !== 0) {
 				curr_date.addClass("event-date");
@@ -324,16 +319,16 @@ var event_data = {
 };
 
 const months = [
-	01,
-	02,
-	03,
-	04,
-	05,
-	06,
-	07,
-	08,
-	09,
-	10,
-	11,
-	12
+	"01",
+	"02",
+	"03",
+	"04",
+	"05",
+	"06",
+	"07",
+	"08",
+	"09",
+	"10",
+	"11",
+	"12"
 ];

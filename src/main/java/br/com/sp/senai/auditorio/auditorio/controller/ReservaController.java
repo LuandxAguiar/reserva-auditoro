@@ -51,11 +51,9 @@ public class ReservaController {
 	// metodo de salvamento da agenda
 	
 	@Administrador
-	@Professor
 	@RequestMapping(value = "salvareserva", method = RequestMethod.POST)
-	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr, Periodo p)
-			throws Exception {
-
+	public String salvar(Reserva reserva, String data, Periodo periodo, RedirectAttributes attr) throws Exception {
+		//confere se o agendamento e nulo 
 		Reserva agendamento = repository.findByDataAndPeriodo(data, periodo);
 
 		if (agendamento != null) {
@@ -63,42 +61,65 @@ public class ReservaController {
 			attr.addFlashAttribute("mensagemErro", "Verificar campos");
 			return "redirect:agendamento";
 		}
-
-		SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-		Calendar dataAtual = Calendar.getInstance();
-		Calendar dataSalva = Calendar.getInstance();
-		dataSalva.setTime(formato.parse(data));
-		dataAtual.add(Calendar.DATE, -1);
-
-		for (Reserva res : repository.findByData(data)) {
-			// repository.deleteById(res.getId());
-			if (res.getData() != null && res.getPeriodo() != Periodo.TODOS) {
-				repository.save(reserva);
-
-			} else if (res.getData() != null && res.getPeriodo() == Periodo.MANHA) {
-				repository.deleteById(res.getId());
-
-				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
+		
+		// conferindo se já tem alguma reserva para não salvar todos 
+		if (reserva.getPeriodo() == Periodo.TODOS) {
+			List<Reserva> agendamentoNoPeriodo = repository.findByData(data);
+			// se tamanho for igual a 0 erro de cadastro 
+			if (agendamentoNoPeriodo.size() > 0) {
+				System.out.println("erro");
+				attr.addFlashAttribute("mensagemErro", "Erro de Cadastro. Já tem Algum Periodo para esse dia");
 				return "redirect:agendamento";
-
-			} else if (res.getData() != null && res.getPeriodo() == Periodo.TARDE) {
-				repository.deleteById(res.getId());
-
-				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
-				return "redirect:agendamento";
-
-			} else if (res.getData() != null && res.getPeriodo() == Periodo.NOITE) {
-				repository.deleteById(res.getId());
-
-				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
-				return "redirect:agendamento";
-
 			}
 
 			return "redirect:agendamento";
-
 		}
+		// pegando a variavel data e transformando em CALENDAR 
+		//format para data 
+		SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+		//CALENDAR de data ATUAL 
+		Calendar dataAtual = Calendar.getInstance();
+		//variavel para pegar a data que foi cadastrada 
+		Calendar dataSalva = Calendar.getInstance();
+		//PEGANDO A STRING DATA E TRANSFORMANDO EM CALENDAR 
+		dataSalva.setTime(formato.parse(data));
+		//CALENDAR - 1, pois sem isso não consegue cadastrar o dia atual 
+		dataAtual.add(Calendar.DATE, -1);
 
+		//fazendo um for para passar por todos campos da data 
+		for (Reserva res : repository.findByData(data)) {
+
+			// repository.deleteById(res.getId());
+			// impede se ha um todos salvo, outros periodos sao negados
+			if (res.getData() != null && res.getPeriodo() != Periodo.TODOS) {
+				System.out.println("meuPau1");
+				attr.addFlashAttribute("mensagemSucesso", "Seu agendamento no Auditorio foi cadastrado");
+				repository.save(reserva);
+			} else if (res.getData() != null && res.getPeriodo() == Periodo.MANHA) {
+				repository.deleteById(res.getId());
+				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
+				System.out.println("meuPau2");
+				return "redirect:agendamento";
+			} else if (res.getData() != null && res.getPeriodo() == Periodo.TARDE) {
+				repository.deleteById(res.getId());
+				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
+				System.out.println("meuPau3");
+				return "redirect:agendamento";
+			} else if (res.getData() != null && res.getPeriodo() == Periodo.NOITE) {
+				repository.deleteById(res.getId());
+				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
+				System.out.println("meuPau4");
+				return "redirect:agendamento";
+
+			}
+		
+			// logica para não salvar todos se tiver outro periodo
+			//mensagem de erro
+		
+			return "redirect:agendamento";
+		}
+		//pegando data cadastrada e atual 
+		//logica para fazer com que dias que ja passaram não cadastre 
 		// PEGAR A DATA E FAZER A COMPARAÇÃO 
 		//PARA NÃO SALVAR DIA QUE JA PASSOU 
 		// 
@@ -119,7 +140,7 @@ public class ReservaController {
 	@Professor
 	@RequestMapping("listareserva/{page}")
 	public String listaReserva(Model model, @PathVariable("page") int page) {
-		PageRequest pageble = PageRequest.of(page - 1, 100, Sort.by(Sort.Direction.ASC, "data"));
+		PageRequest pageble = PageRequest.of(page - 1, 8, Sort.by(Sort.Direction.ASC, "data"));
 
 		Page<Reserva> pagina = repository.findAll(pageble);
 

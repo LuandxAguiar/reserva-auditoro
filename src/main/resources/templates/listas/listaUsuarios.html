@@ -23,7 +23,7 @@
 	<ul>
 		
 		<li>
-			<a href="#home">
+			<a href="http://localhost:8080/">
 				<i class="fa fa-home fa-2x"></i>
 				<span class="nav-text">
 					<b>Home</b>
@@ -33,7 +33,7 @@
 		</li>
 
 		<li>
-			<a href="#login">
+			<a href="/login">
 				<i class="fa fa-home fa-2x"></i>
 				<span class="nav-text">
 					<b>Login</b>
@@ -43,7 +43,7 @@
 		</li>
 
 		<li>
-			<a href="#cadastro">
+			<a href="/cadastro">
 				<i class="fa fa-home fa-2x"></i>
 				<span class="nav-text">
 					<b>Cadastro</b>
@@ -54,7 +54,7 @@
 		
 	</ul>
 
-	<ul class="logout">
+	<ul class="/logout">
 		<li>
 		<a href="#">
 				<i class="fa fa-power-off fa-2x"></i>
@@ -96,7 +96,7 @@
 	<ul class="page">
 		<li th:class="${page == 1 ? 'disabled' : 'waves-effect'}"><a
 			th:href="${page > 1 ? page - 1 : '#'}"><i
-				class="material-icons">>--</i></a></li>
+				class="material-icons"></i></a></li>
 		<li th:class="${page == p ? 'active purple' : 'waves-effect'}"
 			th:each="p:${numPaginas}"><a th:href="${p}"><span th:text="${p}"></span></a></li>
 

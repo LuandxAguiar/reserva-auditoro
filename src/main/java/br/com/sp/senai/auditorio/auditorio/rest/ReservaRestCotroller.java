@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sp.senai.auditorio.auditorio.model.Erro;
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
-import br.com.sp.senai.auditorio.auditorio.model.Usuario;
 import br.com.sp.senai.auditorio.auditorio.repository.ReservaRepository;
 
 @RestController
@@ -27,7 +26,7 @@ public class ReservaRestCotroller {
 	private ReservaRepository repository;
 	
 	//lista menor 
-	@RequestMapping(value = "index", method = RequestMethod.GET)
+	@RequestMapping(value = " ", method = RequestMethod.GET)
 	public Iterable<Reserva> getReserva(){
 		
 		return repository.findAll();

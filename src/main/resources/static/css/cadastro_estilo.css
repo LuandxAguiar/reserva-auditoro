@@ -6,13 +6,14 @@
   @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
   
   body{
-    background: #e2e2e2;    
+    background: rgb(255, 255, 255) !important;    
     background: -webkit-linear-gradient(left, #e2e2e2, #CACACA);
     background: -moz-linear-gradient(left, #e2e2e2, #CACACA);
     background: -o-linear-gradient(left, #e2e2e2, #CACACA);
     background: linear-gradient(to right, #e2e2e2, #D6D6D6); 
     font-family: Helvetica;
   }
+  
 
   .fa-2x {
   font-size: 2em;
@@ -33,6 +34,7 @@
   overflow:visible;
   }
   
+  
   .main-menu {
   background: #e30613;
   border-right:1px solid #e5e5e5;
@@ -52,7 +54,12 @@
   .main-menu>ul {
   margin:7px 0;
   }
-  
+  .msgerror {
+    background-color: white !important;
+    color: red !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+  }
   .main-menu li {
   position:relative;
   display:block;
@@ -253,7 +260,7 @@
     }
     
     .nav-wrapper {
-    background-color: #e30613;
+    background-color: white;
     }
     
     .menu {
@@ -318,6 +325,25 @@
       outline: none;
       background: transparent;
     }
+    .login-box .user-box select {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      background: transparent;
+    }
+    .login-box .user-box select option {
+      color: black;
+    }
+
+    .login-box .user-box select:focus {
+      outline: none;
+    }
+
+
     .login-box .user-box label {
       position: absolute;
       top:0;
@@ -327,8 +353,7 @@
       color: #fff;
       pointer-events: none;
       transition: .5s;
-    }
-    
+    }    
     .login-box .user-box input:focus ~ label,
     .login-box .user-box input:valid ~ label {
       top: -20px;
@@ -336,11 +361,12 @@
       color: #ffffff;
       font-size: 12px;
     }
+    
 
   /* button*/
 
   .custom-btn {
-    width: 130px;
+    width: 100%;
     height: 40px;
     color: #fff;
     border-radius: 5px;

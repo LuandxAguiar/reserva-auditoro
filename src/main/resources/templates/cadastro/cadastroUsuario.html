@@ -18,7 +18,7 @@
         <ul>
             
             <li>
-                <a href="#home">
+                <a href="http://localhost:8080/">
                     <i class="fa fa-home fa-2x"></i>
                     <span class="nav-text">
                         <b>Home</b>
@@ -28,7 +28,7 @@
             </li>
 
             <li>
-                <a href="#login">
+                <a href="/login">
                     <i class="fa fa-home fa-2x"></i>
                     <span class="nav-text">
                         <b>Login</b>
@@ -38,7 +38,7 @@
             </li>
 
             <li>
-                <a href="#cadastro">
+                <a href="/cadastro">
                     <i class="fa fa-home fa-2x"></i>
                     <span class="nav-text">
                         <b>Cadastro</b>
@@ -51,7 +51,7 @@
 
         <ul class="logout">
             <li>
-            <a href="#">
+            <a href="/logout">
                     <i class="fa fa-power-off fa-2x"></i>
                     <span class="nav-text">
                         <b>Deslogar</b>
@@ -63,7 +63,8 @@
     
     <div class="login-box">
         <h2>Cadastro</h2>
-        <form>
+        <form  action="save" method="post">
+        <input type="hidden" name="id" th:value="${users?.id}"/>
                 <div class="user-box">
                     <input type="text" name="nome" th:value="${users?.nome}" required="">
                     <label>Nome</label>
@@ -80,8 +81,19 @@
                     <input type="password" name="senha" th:value="${users?.senha}" required="">
                     <label>Senha</label>
                 </div>
+                  <div class="user-box">
+                    <select name="cars" id="cars" required="">
+                        <option value="" disabled selected>Tipo de Hierarquia:</option>
+                        <option th:each="hierarquia : ${T(br.com.sp.senai.auditorio.auditorio.model.Hierarquia).values()}"
+                        th:value="${hierarquia}"
+                        th:text="${hierarquia}"
+                        th:selected="${hierarquia.toString() == r?.hierarquia?.toString()}"></option>
+                    </select>
+                </div>
 
                 <button type="submit" class="custom-btn btn-15">Cadastrar</button>							
+         	<span style="margin-top: 350px;"><div th:replace="fragments/mensagem" ></div></span>	
+         	
             <!--
                 <div th:if="${param.error}">
                     Senha ou Username Invalidos!

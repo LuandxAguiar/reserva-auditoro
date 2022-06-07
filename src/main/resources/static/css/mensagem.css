@@ -1,9 +1,8 @@
 .msgerror{
 	background-color: red;
 	color:white;	
-	
+	border-radius: 5px;
 }
 .msgsucess{
-	background-color: green;
-	color:black;
+	color: green;
 }

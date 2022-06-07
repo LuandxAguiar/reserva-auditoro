@@ -33,6 +33,7 @@ public class AppInterceptorURL implements HandlerInterceptor {
 			HandlerMethod metodo = (HandlerMethod) handler;
 			if (uri.startsWith("/")) {
 				System.out.println("Session 	" + session.getAttribute("nivel"));
+			
 				if (metodo.getMethodAnnotation(Administrador.class) != null && session.getAttribute("nivel") == Hierarquia.ADMIN) {
 					return true;
 
@@ -43,20 +44,19 @@ public class AppInterceptorURL implements HandlerInterceptor {
 				}
 
 				return false;
-
+			
 			} else {
 
-				if (metodo.getMethodAnnotation(Publico.class) != null) {
-					System.out.println("Tá aqui ");
-					return true;
-				}
 				if (session.getAttribute("usuarioLogado") != null) {
 					return true;
 				}
+				
 				response.sendRedirect("/");
 				return false;
+				
 
 			}
+			
 
 		} else {
 			return true;

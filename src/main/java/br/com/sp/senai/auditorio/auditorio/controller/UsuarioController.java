@@ -19,8 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.data.domain.Page;
 
 import br.com.sp.senai.auditorio.auditorio.annotation.Administrador;
-import br.com.sp.senai.auditorio.auditorio.annotation.Professor;
 import br.com.sp.senai.auditorio.auditorio.annotation.Publico;
+import br.com.sp.senai.auditorio.auditorio.model.Hierarquia;
 import br.com.sp.senai.auditorio.auditorio.model.Usuario;
 import br.com.sp.senai.auditorio.auditorio.repository.UsuarioRepository;
 import br.com.sp.senai.auditorio.auditorio.util.HashUtil;
@@ -31,21 +31,21 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository repository;
 
-	
 	@Administrador
 	@RequestMapping(value = "cadastro", method = RequestMethod.GET)
 	private String form() {
 		System.out.println("passei");
 		// return o nome do arquivo html
-		return "cadastro/cadastroUsuario2";
+		return "cadastro/cadastroUsuario";
 
 	}
 
 	// salvar no banco
-	
+
 	@Administrador
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String salvar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attr, String nif) {
+	public String salvar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attr, String nif,
+			Hierarquia hiera) {
 		System.out.println("passou");
 		System.out.println(usuario.getNif() + usuario.getNome() + usuario.getEmail() + usuario.getSenha());
 
@@ -53,13 +53,42 @@ public class UsuarioController {
 		if (result.hasErrors()) {
 			attr.addFlashAttribute("mensagemErro", "verificar os campos novamente...");
 			// redireciona
+			System.out.println("passou tati");
 			return "redirect:cadastro";
 		}
+
+		// hierarquia nula
+		for (Usuario hieraquia : repository.findByHierarquia(hiera)) {
+			if (hieraquia.getHierarquia() == null) {
+				repository.deleteById(hieraquia.getId());
+				attr.addFlashAttribute("mensagemErro","Erros nos campos, digite novamente");
+				System.out.println("passou taqui");
+				return "redirect:cadastro";
+			}
+
+		}
+
+		for (Usuario res : repository.findByNif(nif)) {
+			// nif null
+			if (res != null) {
+				attr.addFlashAttribute("mensagemErro", "Erro de cadastro, verifique se o Nif já existe");
+				System.out.println("passou lalii");
+				return "redirect:cadastro";
+			}
+			// nif iguais não salvam
+			if (usuario.equals(res)) {
+				System.out.println("Nif Já existe");
+				attr.addFlashAttribute("mensagemErro", "Nif já existe");
+				return "redirect:cadastro";
+			}
+		}
+
 		boolean alterando = usuario.getId() != null ? true : false;
 		// verificando a senha
 		if (usuario.getSenha().equals(HashUtil.hash(""))) {
+			System.out.println("passou aqui");
 			if (!alterando) {
-
+				System.out.println("passou tati 2");
 				// setar a parte da senha do admin
 				String parte = usuario.getEmail().substring(0, usuario.getEmail().indexOf("@"));
 				usuario.setSenha(parte);
@@ -67,12 +96,13 @@ public class UsuarioController {
 
 			} else {
 				String hash = repository.findById(usuario.getId()).get().getSenha();
-
+				
 				usuario.setSenhaComHash(hash);
 			}
 		}
 
 		try {
+			System.out.println("passou tati salve");
 			repository.save(usuario);
 			attr.addFlashAttribute("mensagemSucesso", "Administrador cadastrado com sucesso ID:" + usuario.getId());
 		} catch (Exception e) {
@@ -82,7 +112,6 @@ public class UsuarioController {
 		return "redirect:cadastro";
 	}
 
-	
 	@Administrador
 	@RequestMapping("lista/{page}")
 	public String list(Model model, @PathVariable("page") int page) {
@@ -163,6 +192,7 @@ public class UsuarioController {
 	public String logout(HttpSession session) {
 		// invalida a sessão
 		session.invalidate();
+		
 		// voltar a pagina inicial
 		// redirect pagina inical
 		return "login/login";

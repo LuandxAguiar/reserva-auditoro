@@ -69,4 +69,31 @@ hr{
 	text-align: center;
 }
 
+footer{
+  width: 100%;  
+  position: absolute;
+  bottom: 0;
+}
+
+.icones {
+  background-color: #e30613;
+  text-align: center;
+  margin-top: 40px;
+}
+.icones a img{
+  width: 45px;
+  padding: 10px;
+}
+.info-senai{
+  padding: 10px;
+  text-align: center;
+  background-color: #850000;
+  color: white;
+}
+.direitos{
+  padding: 10px;
+  text-align: center;
+  background-color: #e30613;
+  color: white;
+}
 

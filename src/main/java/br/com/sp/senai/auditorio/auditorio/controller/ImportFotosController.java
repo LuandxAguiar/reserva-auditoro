@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.sp.senai.auditorio.auditorio.annotation.Administrador;
+import br.com.sp.senai.auditorio.auditorio.annotation.Professor;
 import br.com.sp.senai.auditorio.auditorio.model.ImportFotos;
 import br.com.sp.senai.auditorio.auditorio.repository.ImportFotosRepository;
 import br.com.sp.senai.auditorio.auditorio.repository.ReservaRepository;
@@ -26,15 +28,18 @@ public class ImportFotosController {
 	@Autowired
 	private ImportFotosRepository repository;
 	
+	@Professor
+	@Administrador
 	@RequestMapping("cadastreFotos")
 	public String form(Model model) {
-		System.out.println("passou no cadestre");
+		System.out.println("passou no cadastro");
 		model.addAttribute("r", resRepository.findAll());
 		model.addAttribute("fotos", repository.findAll());
 		return "cadastro/cadastroFotos";
 	}
 	//salvar 
-	 
+	@Professor
+	@Administrador
 	@RequestMapping("salvarFoto")
 	public String salvar(ImportFotos fotos , @RequestParam("fileFotos") MultipartFile[] fileFotos) {
 		System.out.println("PASSOU AQUI");
@@ -64,13 +69,16 @@ public class ImportFotosController {
 		return "redirect:cadastreFotos";
 
 	}
+	@Professor
+	@Administrador
 	@RequestMapping("alterandoFotos")
 	public String alterare(Long idRest, Model model) {
 		ImportFotos fot = repository.findById(idRest).get();
 		model.addAttribute("reserva", resRepository.findAll());
 		return "forward:cadastreFotos";
 	}
-
+	
+	@Administrador
 	@RequestMapping("excluirFotos")
 	public String excluirFotos(Long idRest, int numFoto, Model model) {
 		// buscar o bar no banco
