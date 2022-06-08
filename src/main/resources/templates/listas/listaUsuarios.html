@@ -65,7 +65,8 @@
 		</li>  
 	</ul>
 </nav>
-
+	<h1 style="margin-left: 35%;"> Lista de agendamentos</h1>
+	
 	<div class="divLista">
 		<table class="lista">
 			<thead>
@@ -93,16 +94,16 @@
 		</table>
 	</div>
 
-	<ul class="page">
+	<ul class="pagination" style="margin-left: 42%;">
 		<li th:class="${page == 1 ? 'disabled' : 'waves-effect'}"><a
 			th:href="${page > 1 ? page - 1 : '#'}"><i
-				class="material-icons"></i></a></li>
+				class="material-icons"><b><img alt="setaDireita" src="../icons/seta-para-a-esquerda.png" style="width: 22px;"></b></i></a></li>
 		<li th:class="${page == p ? 'active purple' : 'waves-effect'}"
 			th:each="p:${numPaginas}"><a th:href="${p}"><span th:text="${p}"></span></a></li>
 
 		<li th:class="${page == totalPaginas ? 'disabled' : 'waves-effect'}"><a
 			th:href="${page < totalPaginas ? page + 1 : '#'}"><i
-				class="material-icons">></i></a></li>
+				class="material-icons"><b><img alt="setaDireita" src="../icons/foward.png" style="width: 22px;"></b></i></a></li>
 
 	</ul>
 	<footer>

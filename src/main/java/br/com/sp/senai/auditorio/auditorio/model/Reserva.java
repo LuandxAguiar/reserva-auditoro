@@ -22,10 +22,9 @@ public class Reserva {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long id;
 		private String nome;
-		@DateTimeFormat(pattern = "dd-MM-yyyy")
-		private String data;
-		private String descricaoReserva;
-		private String fotos; 
+		@DateTimeFormat(pattern = "yyyy-MM-dd")
+		private String start;
+		private String title; 
 		@ManyToOne
 		private TipoReserva tipo;
 		private Periodo periodo;

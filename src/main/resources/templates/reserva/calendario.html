@@ -84,7 +84,7 @@
 
 			<form class="form" id="form" action="salvareserva" method="post">
 				<input type="hidden" name="id" th:value="${r?.id}" /> <input
-					type="hidden" name="data" id="data" />
+					type="hidden" name="start" id="data" />
 
 				<div class="form-container" align="center">
 					<label class="form-label" id="valueFromMyButton" for="name">Responsavel</label>
@@ -92,7 +92,7 @@
 						th:value="${r?.nome}"> <label class="form-label"
 						id="valueFromMyButton" for="name">Descrição</label>
 					<textarea class="input_description" id="description"
-						name="descricaoReserva" th:value="${r?.descricaoReserva}"></textarea>
+						name="title" th:value="${r?.title}"></textarea>
 
 					<label class="form-label"> Periodo da Reserva </label> <select
 						class="input" name="periodo">
@@ -144,13 +144,6 @@
 		</div>
 	</div>
 
-  <nav>
-            <div class="nav-wrapper">
-                <ul class="menu">
-                    <li> <h1> <span class="senai">SENAI</span> </h1> </li>            
-                </ul>
-            </div>
-        </nav>
         <nav class="main-menu">
         <ul>
             

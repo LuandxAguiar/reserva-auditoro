@@ -81,7 +81,7 @@
 		    </thead>
 	    	<tbody>
 	    		<tr th:each="r:${reserva}" >			
-		    		<td th:text="${r?.data}" />
+		    		<td th:text="${r?.start}" />
 			    	<td th:text="${r?.periodo}" />	
                     <td th:text="${r?.nome}" />		
 			    </tr>	

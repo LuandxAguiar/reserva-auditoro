@@ -65,7 +65,7 @@
 		</li>  
 	</ul>
 </nav>
-
+	<h1 style="margin-left: 35%;"> Lista de agendamentos</h1>
 
 	<div class="divLista">
 		<table class="lista">
@@ -85,8 +85,8 @@
 				<tr th:each="r:${reserva}">
 					<td th:text="${r.id}" />
 					<td th:text="${r.nome}" />
-					<td th:text="${r.data}" />
-					<td th:text="${r.descricaoReserva}" />
+					<td th:text="${r?.start}" />
+					<td th:text="${r?.title}" />
 					<td th:text="${r?.periodo}">
 					<td th:text="${r?.tipo?.nome}"/>
 					<td><a th:href="@{/alteraReserva(id=${r.id})}"><i class="material-icons">create</i> </a></td>
@@ -97,8 +97,8 @@
 	</div>	
 
 	<div class="pagination">
-		<a><b>&lt;</b></a>
-		<a><b>&gt;</b></a>
+		<a><b><img alt="setaDireita" src="../icons/seta-para-a-esquerda.png" style="width: 22px;"></b></a>
+		<a><b><img alt="setaDireita" src="../icons/foward.png" style="width: 22px;"></b></a>
 	</div>
 
 	<footer>

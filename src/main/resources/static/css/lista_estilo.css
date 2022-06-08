@@ -1,3 +1,4 @@
+/* MENU */
   /* bootstrap dropdown hover menu*/
 
 
@@ -5,11 +6,8 @@
   @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
   
   body{
-    background: #e2e2e2;    
-    background: -webkit-linear-gradient(left, #e2e2e2, #CACACA);
-    background: -moz-linear-gradient(left, #e2e2e2, #CACACA);
-    background: -o-linear-gradient(left, #e2e2e2, #CACACA);
-    background: linear-gradient(to right, #e2e2e2, #D6D6D6); 
+    background: white;    
+  
     font-family: Helvetica;
   }
 
@@ -38,7 +36,7 @@
   position:absolute;
   top:0;
   bottom:0;
-  height:100%;
+  height:83.72%;
   right:0;
   width:60px;
   overflow:hidden;
@@ -252,7 +250,7 @@
     }
     
     .nav-wrapper {
-  	background-color: white;
+    background-color: white;
     }
     
     .menu {
@@ -280,6 +278,71 @@
 .divLista{
     padding-top: 40px;
     margin: auto;
+}
+.botao-voltar{
+  margin-left: 10px;
+  width: 1%;
+  min-width: 250px;
+  display: inline-block;
+  vertical-align: top;
+}
+.voltar{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+  /* 15 */
+.btn-voltar {
+  background: #e30613;
+  border: none;
+  z-index: 1;
+}
+.btn-voltar:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #fff;
+  border-radius: 5px;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-voltar:hover {
+  color: #e30613;
+  background-color: #fff;
+}
+.btn-voltar:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-15:active {
+  top: 2px;
+}
+
+.lista-buscar{
+  width: 99%;
+  min-width: 250px;
+  display: inline-block;
+  vertical-align: top;
 }
 .lista{
     margin: auto;
@@ -356,19 +419,16 @@ footer{
   }
 
   .pagination a {
-  	bottom: px;
-	margin-left: 42.5%;
-	background-color: #ffffff;
-	border-radius: 50px;
-	z-index: 1000;
-	background-color: gold;
-	margin-top: 15%;
-	width: 10.9%;
-}
-  
+    color: black;
+    padding: 4px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 20px;
+  }
   .pagination a:hover {    
     color: #FF1744;
     cursor: pointer;
   }
- 
 
+  
+  

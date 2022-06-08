@@ -99,14 +99,16 @@
 	<ul class="pagination">
 		<li th:class="${pagAtual == 1 ? 'disabled' : 'waves-effect'}"><a
 			th:href="${pagAtual > 1 ? pagAtual - 1 : '#'}"><i
-				class="material-icons">chevron_left</i></a></li>
+				class="material-icons"><img alt="setaDireita" src="../icons/seta-para-a-esquerda.png" style="width: 22px;"></b></i></a></li>
 		<li th:class="${pagAtual == p ? 'active purple' : 'waves-effect'}"
 			th:each="p:${numPag}"><a th:href="${p}"><span th:text="${p}"></span></a></li>
 
 		<li th:class="${pagAtual == totalPages ? 'disabled' : 'waves-effect'}"><a
 			th:href="${pagAtual < totalPages ? pagAtual + 1 : '#'}"><i
-				class="material-icons">chevron_right</i></a></li>
-
+				class="material-icons"><b><img alt="setaDireita" src="../icons/foward.png" style="width: 22px;"></b></i></a></li>
+		
+		
+		
 	</ul>
 	
 		<nav class="main-menu">

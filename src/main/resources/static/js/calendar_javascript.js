@@ -21,21 +21,22 @@ function init_calendar(date) {
 	var month = date.getMonth();
 	var year = date.getFullYear();
 	var day_count = days_in_month(month, year);
-	var row = $("<tr class='table-row'></tr>");
+	var row = $("<tr class='table-row'>00</tr>");
 	var today = date.getDate();
 	// Defina a data como 1 para encontrar o primeiro dia do mês
-	date.setDate(1);
+	date.setDate(01);
 	var first_day = date.getDay();
+	
 	// 35+firstDay é o número de elementos de data a serem adicionados à tabela de datas
 	// 35 é de (7 dias em uma semana) * (até 5 linhas de datas em um mês)
-	for (var i = 0; i < 35 + first_day; i++) {
+	for (var i = 00; i < 35 + first_day; i++) {
 		// Como alguns dos elementos estarão em branco, 
 		// Precisa calcular a data real do índice
-		var day = i - first_day + 1;
+		var day = i - first_day + 01;
 		// Se for domingo, faça uma nova linha
-		if (i % 7 === 0) {
+		if (i % 07 === 00) {
 			calendar_days.append(row);
-			row = $("<tr class='table-row'></tr>");
+			row = $("<tr class='table-row'>00</tr>");
 		}
 		// se o índice atual não for um dia deste mês, deixe-o em branco
 		if (i < first_day || day > day_count) {
@@ -45,11 +46,16 @@ function init_calendar(date) {
 		else {
 			var curr_date = $("<td class='table-date'>" + day + "</td>");
 			var events = check_events(day, month + 1, year);
+			if (today === day && $(".active-date").length === 0) {
+				curr_date.addClass("active-date");
+				show_events(events, months[month], day);
+			}
 			// Se esta data tiver algum evento, estilize-a com .event-date
 			if (events.length !== 0) {
 				curr_date.addClass("event-date");
 			}
 			// Definir manipulador onClick para clicar em uma data
+			
 			curr_date.click({ events: events, month: months[month], day: day, year: year }, date_click);
 			row.append(curr_date);
 		}
@@ -61,8 +67,8 @@ function init_calendar(date) {
 
 // Obter o número de dias em um determinado mês/ano
 function days_in_month(month, year) {
-	var monthStart = new Date(year, month, 1);
-	var monthEnd = new Date(year, month + 1, 1);
+	var monthStart = new Date(year, month, 01);
+	var monthEnd = new Date(year, month + 1, 01);
 	return (monthEnd - monthStart) / (1000 * 60 * 60 * 24);
 }
 
@@ -75,8 +81,12 @@ function date_click(event) {
 	show_events(event.data.events, event.data.month, event.data.day);
 
 	input = document.querySelector(".active-date");
-	var d = event.data.day+"-" + event.data.month + "-" + event.data.year;
 	
+	
+	const day = event.data.day + "";
+	var d = event.data.year + "-" + event.data.month + "-" +  day.padStart(2, "0");
+	//var d = event.data.year + "-" + day.padStart(2, "0") + "-" + event.data.month;
+	console.log(d)
 	document.getElementById("data").value = d;
 };
 
@@ -106,11 +116,13 @@ function next_year(event) {
 function prev_year(event) {
 	$("#dialog").hide(250);
 	var date = event.data.date;
+	date = "0" + date 
 	var new_year = date.getFullYear() - 1;
 	$("year").html(new_year);
 	date.setFullYear(new_year);
 	init_calendar(date);
 }
+
 
 // Manipulador de eventos para clicar no botão de novo evento
 function new_event(event) {
