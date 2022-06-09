@@ -18,10 +18,10 @@
         <ul>
             
             <li>
-                <a href="http://localhost:8080/">
+                <a href="http://localhost:8080/evento">
                     <i class="fa fa-home fa-2x"></i>
                     <span class="nav-text">
-                        <b>Home</b>
+                        <b>Eventos</b>
                     </span>
                 </a>
             
@@ -82,12 +82,15 @@
                     <label>Senha</label>
                 </div>
                   <div class="user-box">
-                    <select name="cars" id="cars" required="">
+                    <select name="hierarquia" id="cars" required="">
                         <option value="" disabled selected>Tipo de Hierarquia:</option>
                         <option th:each="hierarquia : ${T(br.com.sp.senai.auditorio.auditorio.model.Hierarquia).values()}"
                         th:value="${hierarquia}"
                         th:text="${hierarquia}"
-                        th:selected="${hierarquia.toString() == r?.hierarquia?.toString()}"></option>
+                        th:selected="${hierarquia.toString() == users?.hierarquia?.toString()}"></option>
+                        
+                        
+                        
                     </select>
                 </div>
 

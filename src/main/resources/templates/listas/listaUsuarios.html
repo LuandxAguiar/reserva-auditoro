@@ -8,6 +8,19 @@
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="../css/lista_estilo.css">
+
+    <script>
+
+function test(pageNumber)
+{
+
+  var page="#page-id-"+pageNumber;
+  $('.select').hide()
+  $(page).show()
+
+}
+
+</script>
 </head>
 <body>
 
@@ -23,10 +36,10 @@
 	<ul>
 		
 		<li>
-			<a href="http://localhost:8080/">
+			<a href="http://localhost:8080/evento">
 				<i class="fa fa-home fa-2x"></i>
 				<span class="nav-text">
-					<b>Home</b>
+					<b>Evento</b>
 				</span>
 			</a>
 		
@@ -92,6 +105,7 @@
 				</tr>
 			</tbody>
 		</table>
+		 <script src="js/pagination.js"></script>
 	</div>
 
 	<ul class="pagination" style="margin-left: 42%;">
@@ -106,6 +120,8 @@
 				class="material-icons"><b><img alt="setaDireita" src="../icons/foward.png" style="width: 22px;"></b></i></a></li>
 
 	</ul>
+	
+	
 	<footer>
         <div class="icones">
            <a href="https://www.facebook.com/senainacional/" target="_blank" title="Link de acesso ao facebook do SENAI"><img src="../imagens/facebook.png"></a>

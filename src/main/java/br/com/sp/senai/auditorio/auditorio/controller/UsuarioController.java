@@ -61,28 +61,15 @@ public class UsuarioController {
 		for (Usuario hieraquia : repository.findByHierarquia(hiera)) {
 			if (hieraquia.getHierarquia() == null) {
 				repository.deleteById(hieraquia.getId());
-				attr.addFlashAttribute("mensagemErro","Erros nos campos, digite novamente");
+				attr.addFlashAttribute("mensagemErro", "Erros nos campos, digite novamente");
 				System.out.println("passou taqui");
 				return "redirect:cadastro";
 			}
 
 		}
 
-		for (Usuario res : repository.findByNif(nif)) {
-			// nif null
-			if (res != null) {
-				attr.addFlashAttribute("mensagemErro", "Erro de cadastro, verifique se o Nif já existe");
-				System.out.println("passou lalii");
-				return "redirect:cadastro";
-			}
-			// nif iguais não salvam
-			if (usuario.equals(res)) {
-				System.out.println("Nif Já existe");
-				attr.addFlashAttribute("mensagemErro", "Nif já existe");
-				return "redirect:cadastro";
-			}
-		}
-
+		// nif iguais não salvam
+	
 		boolean alterando = usuario.getId() != null ? true : false;
 		// verificando a senha
 		if (usuario.getSenha().equals(HashUtil.hash(""))) {
@@ -96,7 +83,7 @@ public class UsuarioController {
 
 			} else {
 				String hash = repository.findById(usuario.getId()).get().getSenha();
-				
+
 				usuario.setSenhaComHash(hash);
 			}
 		}
@@ -154,8 +141,7 @@ public class UsuarioController {
 	@Administrador
 	@RequestMapping("exclue")
 	public String exclua(Long id) {
-		Usuario userExclu = repository.findById(id).get();
-		repository.delete(userExclu);
+		repository.deleteById(id);
 		return "redirect:lista/1";
 	}
 	// buscar
@@ -192,7 +178,7 @@ public class UsuarioController {
 	public String logout(HttpSession session) {
 		// invalida a sessão
 		session.invalidate();
-		
+
 		// voltar a pagina inicial
 		// redirect pagina inical
 		return "login/login";

@@ -29,10 +29,10 @@ public class ReservaRestCotroller {
 	
 	//lista menor 
 	@Publico
-	@RequestMapping(value = "evento", method = RequestMethod.GET)
+	@RequestMapping(value = "event", method = RequestMethod.GET)
 	public Iterable<Reserva> getReserva(){
 		
-		return repository.findAll();
+		return  repository.findAll();
 	}
 	
 	@Administrador

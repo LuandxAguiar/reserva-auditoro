@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sp.senai.auditorio.auditorio.annotation.Administrador;
 import br.com.sp.senai.auditorio.auditorio.annotation.Professor;
+import br.com.sp.senai.auditorio.auditorio.annotation.Publico;
 import br.com.sp.senai.auditorio.auditorio.model.Periodo;
 import br.com.sp.senai.auditorio.auditorio.model.Reserva;
 import br.com.sp.senai.auditorio.auditorio.repository.ReservaRepository;
@@ -72,7 +73,7 @@ public class ReservaController {
 				return "redirect:agendamento";
 			}
 
-			return "redirect:agendamento";
+
 		}
 		// pegando a variavel data e transformando em CALENDAR 
 		//format para data 
@@ -92,23 +93,23 @@ public class ReservaController {
 			// repository.deleteById(res.getId());
 			// impede se ha um todos salvo, outros periodos sao negados
 			if (res.getStart() != null && res.getPeriodo() != Periodo.TODOS) {
-				System.out.println("meuPau1");
+				System.out.println("todos");
 				attr.addFlashAttribute("mensagemSucesso", "Seu agendamento no Auditorio foi cadastrado");
 				repository.save(reserva);
 			} else if (res.getStart() != null && res.getPeriodo() == Periodo.MANHA) {
 				repository.deleteById(res.getId());
 				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
-				System.out.println("meuPau2");
+				System.out.println("passouMan");
 				return "redirect:agendamento";
 			} else if (res.getStart() != null && res.getPeriodo() == Periodo.TARDE) {
 				repository.deleteById(res.getId());
 				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
-				System.out.println("meuPau3");
+				System.out.println("passoutarde");
 				return "redirect:agendamento";
 			} else if (res.getStart() != null && res.getPeriodo() == Periodo.NOITE) {
 				repository.deleteById(res.getId());
 				attr.addFlashAttribute("mensagemErro", "verificar data ou periodo");
-				System.out.println("meuPau4");
+				System.out.println("passouNoi");
 				return "redirect:agendamento";
 
 			}
@@ -191,6 +192,15 @@ public class ReservaController {
 		model.addAttribute("reserva", repository.buscar(buscar));
 
 		return "listas/listarBuscar";
+	}
+	
+	@Publico
+	@Professor
+	@Administrador
+	@RequestMapping(value = "evento", method = RequestMethod.GET)
+	private String evento() {
+		
+		return "eventoApi/evento";
 	}
 
 }

@@ -2,7 +2,9 @@
 	background-color: red;
 	color:white;	
 	border-radius: 5px;
+	font-size: 110%;
 }
 .msgsucess{
-	color: green;
+	color: #00e600;
+	
 }

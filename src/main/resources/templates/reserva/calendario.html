@@ -19,18 +19,18 @@
 			</ul>
 		</div>
 	</nav>
-<div class="caixa">
-			<h4>Como reservar?</h4>
-			<h4>Veja o Passo a Passo:</h4><br>
-			<h4>1º) Selecione uma data específica.</h4>
-			<h4>2º) Clique em adicionar evento.</h4>
-			<h4>3º) Preencha os campos e clique em OK.</h4>
-			<br>
-			<h4>Também é possível buscar por reservas já feitas através da data ou periodo 
-				em que foi realizada. A aréa 
-				de busca se encontra abaixo do calendário. 
-			</h4>
-			</div>
+	<div class="caixa">
+		<h4>Como reservar?</h4>
+		<h4>Veja o Passo a Passo:</h4>
+		<br>
+		<h4>1º) Selecione uma data específica.</h4>
+		<h4>2º) Clique em adicionar evento.</h4>
+		<h4>3º) Preencha os campos e clique em OK.</h4>
+		<br>
+		<h4>Também é possível buscar por reservas já feitas através da
+			data ou periodo em que foi realizada. A aréa de busca se encontra
+			abaixo do calendário.</h4>
+	</div>
 
 	<div class="content">
 		<div class="calendar-container">
@@ -91,8 +91,8 @@
 					<input class="input" type="text" maxlength="36" name="nome"
 						th:value="${r?.nome}"> <label class="form-label"
 						id="valueFromMyButton" for="name">Descrição</label>
-					<textarea class="input_description" id="description"
-						name="title" th:value="${r?.title}"></textarea>
+					<textarea class="input_description" id="description" name="title"
+						th:value="${r?.title}"></textarea>
 
 					<label class="form-label"> Periodo da Reserva </label> <select
 						class="input" name="periodo">
@@ -144,52 +144,33 @@
 		</div>
 	</div>
 
-        <nav class="main-menu">
-        <ul>
-            
-            <li>
-                <a href="http://localhost:8080/">
-                    <i class="fa fa-home fa-2x"></i>
-                    <span class="nav-text">
-                        <b>Home</b>
-                    </span>
-                </a>
-            
-            </li>
+	<nav class="main-menu">
+		<ul>
 
-            <li>
-                <a href="/login">
-                    <i class="fa fa-home fa-2x"></i>
-                    <span class="nav-text">
-                        <b>Login</b>
-                    </span>
-                </a>
-            
-            </li>
+			<li><a href="http://localhost:8080/evento"> <i
+					class="fa fa-home fa-2x"></i> <span class="nav-text"> <b>Evento</b>
+				</span>
+			</a></li>
 
-            <li>
-                <a href="/cadastro">
-                    <i class="fa fa-home fa-2x"></i>
-                    <span class="nav-text">
-                        <b>Cadastro</b>
-                    </span>
-                </a>
-            
-            </li>
-            
-        </ul>
+			<li><a href="/login"> <i class="fa fa-home fa-2x"></i> <span
+					class="nav-text"> <b>Login</b>
+				</span>
+			</a></li>
 
-        <ul class="logout">
-            <li>
-            <a href="/logout">
-                    <i class="fa fa-power-off fa-2x"></i>
-                    <span class="nav-text">
-                        <b>Deslogar</b>
-                    </span>
-                </a>
-            </li>  
-        </ul>
-    </nav>
+			<li><a href="/cadastro"> <i class="fa fa-home fa-2x"></i> <span
+					class="nav-text"> <b>Cadastro</b>
+				</span>
+			</a></li>
+
+		</ul>
+
+		<ul class="logout">
+			<li><a href="/logout"> <i class="fa fa-power-off fa-2x"></i>
+					<span class="nav-text"> <b>Deslogar</b>
+				</span>
+			</a></li>
+		</ul>
+	</nav>
 
 
 	<footer>
