@@ -9,9 +9,8 @@
 <body>
     <nav>
             <div class="nav-wrapper">
-                <ul class="menu">
-                    <li> <h1> <span class="senai">SENAI</span> </h1> </li>            
-                </ul>
+            <img src="imagens/logo_senai_preto.png" alt="Logo do SENAI">
+                
             </div>
         </nav>
         <nav class="main-menu">
@@ -21,7 +20,7 @@
                 <a href="http://localhost:8080/evento">
                     <i class="fa fa-home fa-2x"></i>
                     <span class="nav-text">
-                        <b>Eventos</b>
+                        <b>Home</b>
                     </span>
                 </a>
             
@@ -29,7 +28,7 @@
 
             <li>
                 <a href="/login">
-                    <i class="fa fa-home fa-2x"></i>
+                    <i class="fa fa-sign-in"></i>
                     <span class="nav-text">
                         <b>Login</b>
                     </span>
@@ -39,9 +38,36 @@
 
             <li>
                 <a href="/cadastro">
-                    <i class="fa fa-home fa-2x"></i>
+                    <i class="fa fa-calendar"></i>
                     <span class="nav-text">
-                        <b>Cadastro</b>
+                        <b>Cadastrar</b>
+                    </span>
+                </a>
+            
+            </li>
+              <li>
+                <a href="/listareserva/1">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">
+                        <b>Lista de Reservas</b>
+                    </span>
+                </a>
+            
+            </li>
+              <li>
+                <a href="/lista/1">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">
+                        <b>Listas de Usuario</b>
+                    </span>
+                </a>
+            
+            </li>
+              <li>
+                <a href="/listatiporeserva/1">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">
+                        <b>Lista Tipo da Reserva</b>
                     </span>
                 </a>
             
@@ -52,7 +78,7 @@
         <ul class="logout">
             <li>
             <a href="/logout">
-                    <i class="fa fa-power-off fa-2x"></i>
+                    <i class="fa fa-sign-out"></i>
                     <span class="nav-text">
                         <b>Deslogar</b>
                     </span>
@@ -62,7 +88,7 @@
     </nav>
     
     <div class="login-box">
-        <h2>Cadastro</h2>
+        <h2>CADASTRO</h2>
         <form  action="save" method="post">
         <input type="hidden" name="id" th:value="${users?.id}"/>
                 <div class="user-box">
@@ -82,19 +108,16 @@
                     <label>Senha</label>
                 </div>
                   <div class="user-box">
-                    <select name="hierarquia" id="cars" required="">
+                    <select name="cars" id="cars" required="">
                         <option value="" disabled selected>Tipo de Hierarquia:</option>
                         <option th:each="hierarquia : ${T(br.com.sp.senai.auditorio.auditorio.model.Hierarquia).values()}"
                         th:value="${hierarquia}"
                         th:text="${hierarquia}"
-                        th:selected="${hierarquia.toString() == users?.hierarquia?.toString()}"></option>
-                        
-                        
-                        
+                        th:selected="${hierarquia.toString() == r?.hierarquia?.toString()}"></option>
                     </select>
                 </div>
 
-                <button type="submit" class="custom-btn btn-15">Cadastrar</button>							
+                <button type="submit" class="custom-btn btn-15"><b>CADASTRAR</b></button>							
          	<span style="margin-top: 350px;"><div th:replace="fragments/mensagem" ></div></span>	
          	
             <!--
@@ -117,10 +140,7 @@
 		<a href="https://www.instagram.com/senai_nacional/" target="_blank" title="Link de acesso ao instagram do SENAI"><img src="imagens/instagram.png"></a>
 	</div>
 	<div class="info-senai">
-		<p>O Serviço Nacional de Aprendizagem Industrial (SENAI) tem como objetivo<br> 
-			estimular a inovação industrial por meio da educação, consultoria,<br>
-			pesquisa aplicada e serviços técnicos e tecnológicos que são decisivos<br> 
-			para a competitividade das empresas do Estado e do Brasil.</p>			
+		<p></p>			
 	</div>
 	<div class="direitos">
 		<small>Copyright 2022 © Todos os direitos reservados.</small>

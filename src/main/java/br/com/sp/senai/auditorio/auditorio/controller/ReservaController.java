@@ -75,6 +75,15 @@ public class ReservaController {
 
 
 		}
+		if (reserva.getPeriodo() == Periodo.TODOS) {
+			reserva.setBackgroundColor("#613dc1");
+		}else if (reserva.getPeriodo() == Periodo.MANHA) {
+			reserva.setBackgroundColor("#99e2b4");
+		}else if (reserva.getPeriodo() == Periodo.TARDE) {
+			reserva.setBackgroundColor("#0096c7");
+		}else {
+			reserva.setBackgroundColor("#353535");
+		}
 		// pegando a variavel data e transformando em CALENDAR 
 		//format para data 
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -94,6 +103,7 @@ public class ReservaController {
 			// impede se ha um todos salvo, outros periodos sao negados
 			if (res.getStart() != null && res.getPeriodo() != Periodo.TODOS) {
 				System.out.println("todos");
+				
 				attr.addFlashAttribute("mensagemSucesso", "Seu agendamento no Auditorio foi cadastrado");
 				repository.save(reserva);
 			} else if (res.getStart() != null && res.getPeriodo() == Periodo.MANHA) {
@@ -129,6 +139,9 @@ public class ReservaController {
 			System.out.println("Erro da data");
 			return "redirect:agendamento";
 		}
+		//jogar cor 
+		
+		
 		//ADICIONA RESERVA 
 		repository.save(reserva);
 		attr.addFlashAttribute("mensagemSucesso", "Sua data foi salva");
@@ -199,7 +212,6 @@ public class ReservaController {
 	@Administrador
 	@RequestMapping(value = "evento", method = RequestMethod.GET)
 	private String evento() {
-		
 		return "eventoApi/evento";
 	}
 

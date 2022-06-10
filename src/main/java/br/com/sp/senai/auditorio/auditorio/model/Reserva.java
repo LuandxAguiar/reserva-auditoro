@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.google.type.Color;
+
 import lombok.Data;
 
 @Entity
@@ -28,4 +30,5 @@ public class Reserva {
 		@ManyToOne
 		private TipoReserva tipo;
 		private Periodo periodo;
+		private String backgroundColor;
 }

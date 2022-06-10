@@ -42,8 +42,8 @@ function indexMain() {
             eventSources: [
                 {
                     url: 'http://10.92.198.27:8080/event',
-                    color: 'yellow',
-                    textColor: 'black'
+                    color: 'black',
+                    
                 }
                 
 
@@ -51,7 +51,7 @@ function indexMain() {
             events: [],
              eventClick: function(info) {
 
-                alert('Event: ' + info.event.title + info.event.periodo);
+                alert('Event: ' + info.event.title);
 
 
 
