@@ -43,7 +43,7 @@ public class TipoReservaController {
 	@RequestMapping("listatiporeserva/{page}")
 	public String list(Model model, @PathVariable("page")int page) {
 		//criar uma pageble para informar os parametros da pagina 
-		PageRequest pageble = PageRequest.of(page-1, 6 , Sort.by(Sort.Direction.ASC,"nome"));
+		PageRequest pageble = PageRequest.of(page-1, 10 , Sort.by(Sort.Direction.ASC,"nome"));
 		//criando lista 
 		
 		Page<TipoReserva> pagina = repository.findAll(pageble);

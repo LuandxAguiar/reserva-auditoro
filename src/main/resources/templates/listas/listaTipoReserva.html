@@ -11,60 +11,86 @@
 </head>
 <body>
 
-	<nav>
-		<div class="nav-wrapper">
-			<ul class="menu">
-				<li> <h1> <span class="senai">SENAI</span> </h1> </li>            
-			</ul>
-		</div>
-	</nav>
+ <nav>
+            <div class="nav-wrapper">
+            <img src="../imagens/logo_senai_preto.png" alt="Logo do SENAI">
+                
+            </div>
+        </nav>
+        <nav class="main-menu">
+        <ul>
+            
+            <li>
+                <a href="http://10.92.198.27:8080/evento">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        <b>Home</b>
+                    </span>
+                </a>
+            
+            </li>
 
-	<nav class="main-menu">
-	<ul>
-		
-		<li>
-			<a href="#home">
-				<i class="fa fa-home fa-2x"></i>
-				<span class="nav-text">
-					<b>Home</b>
-				</span>
-			</a>
-		
-		</li>
+            <li>
+                <a href="/login">
+                    <i class="fa fa-sign-in"></i>
+                    <span class="nav-text">
+                        <b>Login</b>
+                    </span>
+                </a>
+            
+            </li>
 
-		<li>
-			<a href="#login">
-				<i class="fa fa-home fa-2x"></i>
-				<span class="nav-text">
-					<b>Login</b>
-				</span>
-			</a>
-		
-		</li>
+            <li>
+                <a href="/cadastro">
+                    <i class="fa fa-calendar"></i>
+                    <span class="nav-text">
+                        <b>Cadastrar</b>
+                    </span>
+                </a>
+            
+            </li>
+              <li>
+                <a href="/listareserva/1">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">
+                        <b>Lista de Reservas</b>
+                    </span>
+                </a>
+            
+            </li>
+              <li>
+                <a href="/lista/1">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">
+                        <b>Listas de Usuario</b>
+                    </span>
+                </a>
+            
+            </li>
+              <li>
+                <a href="/listatiporeserva/1">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">
+                        <b>Lista Tipo da Reserva</b>
+                    </span>
+                </a>
+            
+            </li>
+            
+        </ul>
 
-		<li>
-			<a href="#cadastro">
-				<i class="fa fa-home fa-2x"></i>
-				<span class="nav-text">
-					<b>Cadastro</b>
-				</span>
-			</a>
-		
-		</li>
-		
-	</ul>
-
-	<ul class="logout">
-		<li>
-		<a href="#">
-				<i class="fa fa-power-off fa-2x"></i>
-				<span class="nav-text">
-					<b>Deslogar</b>
-				</span>
-			</a>
-		</li>  
-	</ul>
-</nav>
+        <ul class="logout">
+            <li>
+            <a href="/logout">
+                    <i class="fa fa-sign-out"></i>
+                    <span class="nav-text">
+                        <b>Deslogar</b>
+                    </span>
+                </a>
+            </li>  
+        </ul>
+    </nav>
+	
 	<table>
 		<div class="divLista">
 		<table class="lista">
@@ -95,85 +121,27 @@
 	</table>
 	
 	</table>
-	</div>
-	<ul class="pagination">
-		<li th:class="${pagAtual == 1 ? 'disabled' : 'waves-effect'}"><a
-			th:href="${pagAtual > 1 ? pagAtual - 1 : '#'}"><i
-				class="material-icons"><img alt="setaDireita" src="../icons/seta-para-a-esquerda.png" style="width: 22px;"></b></i></a></li>
-		<li th:class="${pagAtual == p ? 'active purple' : 'waves-effect'}"
-			th:each="p:${numPag}"><a th:href="${p}"><span th:text="${p}"></span></a></li>
-
-		<li th:class="${pagAtual == totalPages ? 'disabled' : 'waves-effect'}"><a
-			th:href="${pagAtual < totalPages ? pagAtual + 1 : '#'}"><i
-				class="material-icons"><b><img alt="setaDireita" src="../icons/foward.png" style="width: 22px;"></b></i></a></li>
-		
-		
-		
-	</ul>
 	
-		<nav class="main-menu">
-	<ul>
-		
-		<li>
-			<a href="#home">
-				<i class="fa fa-home fa-2x"></i>
-				<span class="nav-text">
-					<b>Home</b>
-				</span>
-			</a>
-		
-		</li>
-
-		<li>
-			<a href="#login">
-				<i class="fa fa-home fa-2x"></i>
-				<span class="nav-text">
-					<b>Login</b>
-				</span>
-			</a>
-		
-		</li>
-
-		<li>
-			<a href="#cadastro">
-				<i class="fa fa-home fa-2x"></i>
-				<span class="nav-text">
-					<b>Cadastro</b>
-				</span>
-			</a>
-		
-		</li>
-		
-	</ul>
-
-	<ul class="logout">
-		<li>
-		<a href="#">
-				<i class="fa fa-power-off fa-2x"></i>
-				<span class="nav-text">
-					<b>Deslogar</b>
-				</span>
-			</a>
-		</li>  
-	</ul>
-</nav>
-<footer>
+	<div class="pagination">
+		<a><b><img alt="setaDireita" src="../icons/seta-para-a-esquerda.png" style="width: 22px;"></b></a>
+		<a><b><img alt="setaDireita" src="../icons/foward.png" style="width: 22px;"></b></a>
+	</div>
+	
+	 
+    <footer>
 	<div class="icones">
-		 <a href="https://www.facebook.com/senainacional/" target="_blank" title="Link de acesso ao facebook do SENAI"><img src="../imagens/facebook.png"></a>
+		<a href="https://www.facebook.com/senainacional/" target="_blank" title="Link de acesso ao facebook do SENAI"><img src="../imagens/facebook.png"></a>
 		<a href="https://twitter.com/senainacional?lang=en" target="_blank" title="Link de acesso ao twitter do SENAI"><img src="../imagens/twitter.png"></a>
 		<a href="https://www.youtube.com/c/senaibrasil" target="_blank" title="Link de acesso ao youtube do SENAI"><img src="../imagens/youtube.png"></a>
 		<a href="https://br.linkedin.com/company/senai-nacional" target="_blank" title="Link de acesso ao linkedin do SENAI"><img src="../imagens/linkedin.png"></a>
 		<a href="https://www.instagram.com/senai_nacional/" target="_blank" title="Link de acesso ao instagram do SENAI"><img src="../imagens/instagram.png"></a>
 	</div>
 	<div class="info-senai">
-		<p>O Serviço Nacional de Aprendizagem Industrial (SENAI) tem como objetivo<br> 
-			estimular a inovação industrial por meio da educação, consultoria,<br>
-			pesquisa aplicada e serviços técnicos e tecnológicos que são decisivos<br> 
-			para a competitividade das empresas do Estado e do Brasil.</p>			
+		<p></p>			
 	</div>
 	<div class="direitos">
 		<small>Copyright 2022 © Todos os direitos reservados.</small>
 	</div>		
-</footer>
+	</footer>
 </body>
 </html>

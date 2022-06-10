@@ -106,6 +106,59 @@
     display: block;
     text-align: left;
     }
+    .conteudo{
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 290px;
+padding: 20px;
+}
+.cores{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: -10px 10px rgb(98, 100, 100);
+   
+
+
+}
+.cor{
+    display: flex;
+    flex-direction: row;
+}
+.periodo{
+    display: flex;
+    width: 100px;
+}
+.bloco1{
+    width: 25px;
+    background-color: #613dc1;
+    border-radius: 20px;
+}
+.bloco2{
+    width: 25px;
+    background-color: #99e2b4;
+    border-radius: 20px;
+
+}
+.bloco3{
+    width: 25px;
+    background-color: #0096c7;
+    border-radius: 20px;
+
+}
+.bloco4{
+    width: 25px;
+    background-color: #353535;
+    border-radius: 20px;
+    height: 36px;
+    margin-top: 5px;
+
+}
+
     
     .dropdown-content a:hover {
     background-color: #ffffff;
@@ -382,14 +435,14 @@ footer {
 .icones {
 	background-color: #074a71;
 	text-align: center;
-	margin-top: 40px;
+	margin-top: 20px;
 	color: #FFFFFF;
 	border-bottom: 3px solid;
 	margin-bottom: 0;
 }
 
 .icones a img {
-	width: 45px;
+	width: 25px;
 	padding: 10px;
 }
 

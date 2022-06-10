@@ -103,7 +103,7 @@ public class UsuarioController {
 	@RequestMapping("lista/{page}")
 	public String list(Model model, @PathVariable("page") int page) {
 		// criar uma pageble para informar os parametros da pagina
-		PageRequest pageble = PageRequest.of(page - 1, 6, Sort.by(Sort.Direction.ASC, "nome"));
+		PageRequest pageble = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.ASC, "nome"));
 		// criando lista
 
 		Page<Usuario> pagina = repository.findAll(pageble);

@@ -154,7 +154,7 @@ public class ReservaController {
 	@Professor
 	@RequestMapping("listareserva/{page}")
 	public String listaReserva(Model model, @PathVariable("page") int page) {
-		PageRequest pageble = PageRequest.of(page - 1, 8, Sort.by(Sort.Direction.ASC, "start"));
+		PageRequest pageble = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.ASC, "start"));
 
 		Page<Reserva> pagina = repository.findAll(pageble);
 
