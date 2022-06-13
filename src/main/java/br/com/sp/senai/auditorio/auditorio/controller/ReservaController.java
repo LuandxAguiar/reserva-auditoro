@@ -180,7 +180,6 @@ public class ReservaController {
 	// alterar a reserva
 
 	@Administrador
-	@Professor
 	@RequestMapping("alteraReserva")
 	public String alteraReserva(Long id, Model model) {
 		// busca a reserva pelo ID possibilitando a alteração

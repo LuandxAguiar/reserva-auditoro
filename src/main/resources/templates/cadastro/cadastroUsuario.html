@@ -37,10 +37,20 @@
             </li>
 
             <li>
-                <a href="/cadastro">
+                <a href="/agendamento">
                     <i class="fa fa-calendar"></i>
                     <span class="nav-text">
-                        <b>Cadastrar</b>
+                        <b>Agendamento</b>
+                    </span>
+                </a>
+            
+            </li>
+            
+            <li>
+                <a href="/cadastro">
+                    <i class="fa fa-user"></i>
+                    <span class="nav-text">
+                        <b>Cadastrar Usuário</b>
                     </span>
                 </a>
             
@@ -73,16 +83,6 @@
             
             </li>
             
-               <li>
-                <a href="/listatiporeserva/1">
-                    <i class="fa fa-list"></i>
-                    <span class="nav-text">
-                        <b>Lista Tipo da Reserva</b>
-                    </span>
-                </a>
-            
-            </li>
-            
         </ul>
 
         <ul class="logout">
@@ -102,23 +102,23 @@
         <form  action="save" method="post">
         <input type="hidden" name="id" th:value="${users?.id}"/>
                 <div class="user-box">
-                    <input type="text" name="nome" th:value="${users?.nome}" required="">
+                    <input type="text" name="nome" th:value="${users?.nome}" >
                     <label>Nome</label>
                 </div>
                 <div class="user-box">
-                    <input type="text" name="nif" th:value="${users?.nif}" required="">
+                    <input type="text" name="nif" th:value="${users?.nif}">
                     <label>NIF</label>
                 </div>
                 <div class="user-box">
-                    <input type="text" name="email" th:value="${users?.email}"required="">
+                    <input type="text" name="email" th:value="${users?.email}">
                     <label>Email</label>
                 </div>
                 <div class="user-box">
-                    <input type="password" name="senha" th:value="${users?.senha}" required="">
+                    <input type="password" name="senha" th:value="${users?.senha}" >
                     <label>Senha</label>
                 </div>
                   <div class="user-box">
-                    <select name="cars" id="cars" required="">
+                    <select name="hierarquia" id="cars">
                         <option value="" disabled selected>Tipo de Hierarquia:</option>
                         <option th:each="hierarquia : ${T(br.com.sp.senai.auditorio.auditorio.model.Hierarquia).values()}"
                         th:value="${hierarquia}"
@@ -155,7 +155,7 @@
 	<div class="direitos">
 		<small>Copyright 2022 © Todos os direitos reservados.</small>
 	</div>		
-</footer>
+	</footer>
 
 </body>
 </html>

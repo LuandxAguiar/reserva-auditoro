@@ -54,7 +54,7 @@ body {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	height: 100%;
+	height: 102.295%;
 	right: 0;
 	width: 60px;
 	overflow: hidden;
@@ -769,7 +769,7 @@ footer {
 }
 
 .info-senai {
-	padding: 50px 0;
+	padding: 65px 0;
 	text-align: center;
 	background: url(../imagens/bg_footer.jpg) top center no-repeat #074a71;
 	background-size: 100% auto;

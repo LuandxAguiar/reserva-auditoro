@@ -1,155 +1,201 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/index.css">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/index.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tiro+Gurmukhi:ital@1&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Tiro+Gurmukhi:ital@1&display=swap"
+	rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
 
-    <title>Calendario</title>
+<title>Calendario</title>
 </head>
 
-    <body>
-           <nav>
-            <div class="nav-wrapper">
-            <img src="imagens/logo_senai_preto.png" alt="Logo do SENAI">
-                
-            </div>
-        </nav>
+<body>
+	<nav>
+		<div class="nav-wrapper">
+			<img src="imagens/logo_senai_preto.png" alt="Logo do SENAI">
 
-    
-    <div class="titulo-calendar">    
-        <h3>Calendario do auditório</h3>
-    </div>
-	   <div class="conteudo">
-	        <div class="cores">
-	            <div class="cor">
-	                <h2 class="periodo">Manhã</h2>
-	                <div class="bloco1"></div>
-	            </div>
-	            <div class="cor">
-	                <h2 class="periodo">Tarde</h2>
-	                <div class="bloco2"></div>
-	            </div>
-	            <div class="cor">
-	                <h2 class="periodo">Noite</h2>
-	                <div class="bloco3"></div>
-	            </div>
-	            <div class="cor">
-	                <h2 class="periodo">Dia Todo</h2>
-	                <div class="bloco4"></div>
-	            </div>
-	        </div>
-    <div class="dime-cale">
-            <div class="todo-grid-parent">
-                    <select id ="categoryFilter"></select>  
-            </div>
-            
-            <div class="todo-calendar todo-block">
-                <div id='calendar'></div>
-            </div>
-    </div>
 		</div>
+	</nav>
 
-        <nav class="main-menu">
-        <ul>
-            
-            <li>
-                <a href="http://10.92.198.27:8080/evento">
-                    <i class="fa fa-home fa-2x"></i>
-                    <span class="nav-text">
-                        <b>Home</b>
-                    </span>
-                </a>
-            
-            </li>
 
-            <li>
-                <a href="/login">
-                    <i class="fa fa-sign-in"></i>
-                    <span class="nav-text">
-                        <b>Login</b>
-                    </span>
-                </a>
-            
-            </li>
-
-            <li>
-                <a href="/cadastro">
-                    <i class="fa fa-calendar"></i>
-                    <span class="nav-text">
-                        <b>Cadastrar</b>
-                    </span>
-                </a>
-            
-            </li>
-              <li>
-                <a href="/listareserva/1">
-                    <i class="fa fa-list"></i>
-                    <span class="nav-text">
-                        <b>Lista de Reservas</b>
-                    </span>
-                </a>
-            
-            </li>
-              <li>
-                <a href="/lista/1">
-                    <i class="fa fa-list"></i>
-                    <span class="nav-text">
-                        <b>Listas de Usuario</b>
-                    </span>
-                </a>
-            
-            </li>
-              <li>
-                <a href="/listatiporeserva/1">
-                    <i class="fa fa-list"></i>
-                    <span class="nav-text">
-                        <b>Lista Tipo da Reserva</b>
-                    </span>
-                </a>
-            
-            </li>
-            
-        </ul>
-
-        <ul class="logout">
-            <li>
-            <a href="/logout">
-                    <i class="fa fa-sign-out"></i>
-                    <span class="nav-text">
-                        <b>Deslogar</b>
-                    </span>
-                </a>
-            </li>  
-        </ul>
-    </nav>
-    	
-           <footer>
-	<div class="icones">
-		<a href="https://www.facebook.com/senainacional/" target="_blank" title="Link de acesso ao facebook do SENAI"><img src="imagens/facebook.png"></a>
-		<a href="https://twitter.com/senainacional?lang=en" target="_blank" title="Link de acesso ao twitter do SENAI"><img src="imagens/twitter.png"></a>
-		<a href="https://www.youtube.com/c/senaibrasil" target="_blank" title="Link de acesso ao youtube do SENAI"><img src="imagens/youtube.png"></a>
-		<a href="https://br.linkedin.com/company/senai-nacional" target="_blank" title="Link de acesso ao linkedin do SENAI"><img src="imagens/linkedin.png"></a>
-		<a href="https://www.instagram.com/senai_nacional/" target="_blank" title="Link de acesso ao instagram do SENAI"><img src="imagens/instagram.png"></a>
+	<div class="titulo-calendar">
+		<h3>Calendario do auditório</h3>
 	</div>
-	<div class="info-senai">
-		<p></p>			
-	</div>
-	<div class="direitos">
-		<small>Copyright 2022 © Todos os direitos reservados.</small>
-	</div>		
-</footer>
+	<div class="conteudo">
+		<div class="cores">
+			<div class="cor">
+				<h2 class="periodo">Manhã</h2>
+				<div class="bloco1"></div>
+			</div>
+			<div class="cor">
+				<h2 class="periodo">Tarde</h2>
+				<div class="bloco2"></div>
+			</div>
+			<div class="cor">
+				<h2 class="periodo">Noite</h2>
+				<div class="bloco3"></div>
+			</div>
+			<div class="cor">
+				<h2 class="periodo">Dia Todo</h2>
+				<div class="bloco4"></div>
+			</div>
+		</div>
+		<div class="dime-cale">
+			<div class="todo-grid-parent">
+				<select id="categoryFilter"></select>
+			</div>
 
-    <script src="../js/index.js"></script>
+			<div class="todo-calendar todo-block">
+				<div id='calendar'></div>
+			</div>
+		</div>
+	</div>
+
+	<nav class="main-menu">
+		<ul>
+
+			<li><a href="http://10.92.198.27:8080/evento"> <i
+					class="fa fa-home fa-2x"></i> <span class="nav-text"> <b>Home</b>
+				</span>
+			</a></li>
+
+			<li><a href="/login"> <i class="fa fa-sign-in"></i> <span
+					class="nav-text"> <b>Login</b>
+				</span>
+			</a></li>
+
+			<li><a href="/agendamento"> <i class="fa fa-calendar"></i> <span
+					class="nav-text"> <b>Agendamento</b>
+				</span>
+			</a></li>
+
+			<li><a href="/cadastro"> <i class="fa fa-user"></i> <span
+					class="nav-text"> <b>Cadastrar Usuário</b>
+				</span>
+			</a></li>
+			<li><a href="/listareserva/1"> <i class="fa fa-list"></i> <span
+					class="nav-text"> <b>Lista de Reservas</b>
+				</span>
+			</a></li>
+			<li><a href="/lista/1"> <i class="fa fa-list"></i> <span
+					class="nav-text"> <b>Listas de Usuario</b>
+				</span>
+			</a></li>
+			<li><a href="/listatiporeserva/1"> <i class="fa fa-list"></i>
+					<span class="nav-text"> <b>Lista Tipo da Reserva</b>
+				</span>
+			</a></li>
+
+		</ul>
+
+		<ul class="logout">
+			<li><a href="/logout"> <i class="fa fa-sign-out"></i> <span
+					class="nav-text"> <b>Deslogar</b>
+				</span>
+			</a></li>
+		</ul>
+	</nav>
+	<ul class="accordion">
+		<li><label class="accordion-item" for="accordion-item-1" style="text-align: center;"><img class="imagem" alt="livro" src="../imagens/manual.png"></label> <input type="radio" name="meu_accordion" id="accordion-item-1">
+			<div class="accordion-content">
+
+		
+		  <div class="containerH">
+            <div class="tituloUse">
+                <h1 style="text-align: center;"> <i class="large material-icons">book</i> Manual Do Auditório</h1>
+                </div>
         
-    </body>
+                <div style="text-align: center">
+                    <h1>Informações do Auditório</h1>
+                    <div class="d1">
+                        <h2> <i class="large material-icons">accessible</i> Acessibilidade:</h2>
+                        <ul>
+                            <li class="linhas"><i class="large material-icons">wheelchair_pickup</i> Na escola á rampas e pisos de alto relevo que possibilitam o acesso até o auditório para cadeirantes e deficientes visuais.</li>
+                        </ul>
+                    </div>
+        
+                    <div class="d2">
+                        <h2> <i class="large material-icons">whatshot</i> Incêndio:</h2>
+                        <ul class="ul2">
+                            <h2>Todos os estudantes devem estar atentos aos perigos de incêndio em nossa escola.Atenção:
+                                ao ouvir o alarme contínuo de sirene,você deverá:
+        
+                            </h2>
+                            <li class="linhas"><i class="large material-icons">exit_to_app</i> Evacuar o edificio imediatamente de acordo com as rotas de fuga  demarcadas no auditório.</li>
+                            <li class="linhas"><i class="large material-icons">add_location</i> Dirigir-se a um local previamente designado.</li>
+                            <li class="linhas"><i class="large material-icons">access_time</i> Permanecer neste local até que seja divulgado o aviso de que não há mais perigo.</li>
+                        </ul>
+                    </div>
+        
+                    <div class="d3">
+                        <h2> <i class="large material-icons">do_not_disturb</i> Proibições:</h2>
+                           
+                        <ul>
+                            <h2>Algumas coisas são proibidas no auditório como:</h2>
+                            <li class="linhas"> <i class="large material-icons">smoke_free</i> Não é permitido de forma alguma fumar no auditório.</li>
+                            <li class="linhas"> <i class="large material-icons">no_food</i> Não é permitido de forma alguma comer ou beber no auditório.</li>
+                            <li class="linhas"> <i class="large material-icons">volume_off</i> Não é permitido de forma alguma o uso de aparelhos sonóros no auditório durante palestras e apresentações.</li>
+                        </ul>
+                    </div>
+        
+                    <div class="d4">
+                        <h2> <i class="large material-icons">storage</i> Sistemas:</h2>
+                        <ul>
+                            <li class="linhas"><i class="large material-icons">speaker_group</i>Caixas de som:</li>
+                            <li class="linhas"><i class="large material-icons">videocam</i><i class="large material-icons">subtitles</i> Projetor: </li>
+                            <li class="linhas"><i class="large material-icons">laptop_chromebook</i> Computadores: A dois computadores no alditório, ambos são responsaveis pela projeção, o uso das maquinás só é consedido com autorização juntamente com a reserva feita nesta aplicação.</li>
+                            <li class="linhas"><i class="large material-icons">light</i> Iluminação: A iluminação do auditório e totalmente controlada por um controle remoto que
+                            possui várias funções, cada número do controle é responsavel por uma parte da iluminação do auditório como por exemplo:<br>
+                            1 - Luzes corredor direito.<br>
+                            2 - luzes corredor fundo.<br>
+                            3 - luzes fundo 2 fileira.<br>
+                            4 - luzes fundo 3 fileira.<br>
+                            5 - luzes fundo 4 fileira.<br>
+                            6 - luzes fundo 5 fileira.<br>
+                            7 - luzes corredor da frente primeira fileira.<br>
+                            8 - luz púlpito.<br>
+                            9 - led palco 1 fila.<br>
+                            10 - led palco 2 fila.<br>
+                            11 - led bandeira.<br>
+                            12 - Led corredor esquerdo.<br>
+                            
+                            essa é a lista dos botões do controle que controla a iluminação do auditório. 
+                            
+                            </li>
+                        </ul>
+                    </div>
+        
+                    <div class="d5">
+                        <h2> <i class="large material-icons">warning</i> Normas De Segurança !!!:</h2>
+                        <ul>
+                            <li class="linhas"><i class="large material-icons">menu_book</i>ATENÇÂO: O uso do auditório e de todos os equipamentos do mesmo passuem manuais para o uso correto, 
+                                por isso leia atentamente antes de execultar qualquer atividade, assim tensdo mais segurança e
+                                mantendo a conservação do ambiente de ensino.</li>
+                        </ul>
+                    </div>
+        		
+        
+</div></li>
+	
+			
+	
+	</ul>
+
+               
+
+	<script src="../js/index.js"></script>
+
+</body>
 
 </html>

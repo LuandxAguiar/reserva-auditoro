@@ -3,6 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 
+
 /* Nav */
 * {
     margin: 0;
@@ -20,22 +21,17 @@
       align-content: space-between;
     }
     
-    h1 {
-    font-weight: 900;
-    font-style: italic;
-    font-size: clamp(3rem, 1vmin, 3rem);
-    letter-spacing: 0.04em;
-    margin: 0;
-    color: white;
-    -webkit-text-stroke-width: 0.045em;
-    -webkit-text-stroke-color: #000000;
-    -webkit-transform: skew(-10deg);
-        transform: skew(-10deg);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    }
-    
+h1{
+	margin-top: 2%;
+	text-align: center;
+	background-color: #ccc;
+	  margin: 30px;
+   				 margin-left: 10%;
+   	 			width: 85%;
+}
+  .imagem{
+  width: 10%;
+  }
     h1 span {
     --t: 0.20em;
     display: block;
@@ -76,9 +72,7 @@
     }
     }
     
-    li {
-    float: left;
-    }
+  
     
     li a, .dropbtn {
     padding: 14px 16px;
@@ -124,6 +118,17 @@ padding: 20px;
    
 
 
+}
+/* Esconde o input e os conteúdos */
+.accordion .accordion-content,
+.accordion .accordion-item + input[type="radio"]
+{
+  display: none;
+}
+
+/* só mostra conteúdos com :checked em seu input */
+.accordion input[type="radio"]:checked + .accordion-content {
+  display: block;
 }
 .cor{
     display: flex;
@@ -309,7 +314,7 @@ h3 {
 .main-menu {
 	background: #074a71;
 	border-right: 1px solid #e5e5e5;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	bottom: 0;
 	height: 100%;
@@ -411,6 +416,64 @@ nav ul, nav li {
 	.dashboard-page nav.dashboard-menu ul li.active a {
 	color: #f33737;
 	background-color: white;
+}
+			  .titulo{
+                background-color: #bababa;
+                border-radius: 10px;
+                text-align: center;
+                  margin: 30px;
+   				 margin-left: 10%;
+   	 			width: 85%;
+            }
+            .d1{
+                background-color: #bababa;
+                border-radius: 10px;
+                padding-bottom: 10px;
+              margin: 30px;
+    margin-left: 10%;
+    width: 85%;
+            }
+
+            .d2{
+                background-color: #bababa;
+                border-radius: 10px;
+                padding-bottom: 10px;
+              margin: 30px;
+    margin-left: 10%;
+    width: 85%;
+     
+            }
+        
+
+            .d3{
+                background-color: #bababa;
+                border-radius: 10px;
+                padding-bottom: 10px;
+               margin: 30px;
+    margin-left: 10%;
+    width: 85%;
+            }
+            
+            .d4{
+                background-color: #bababa;
+                border-radius: 10px;
+                padding-bottom: 10px;
+              	margin: 30px;
+    			margin-left: 10%;
+  				 width: 85%;
+            }
+            .d5{
+                background-color:#bababa;
+                border-radius: 10px;
+                padding-bottom: 10px;
+                margin: 30px;
+   				 margin-left: 10%;
+   	 			width: 85%;
+
+
+}
+.linhas:empty{
+	background-color: lime;
 }
 .area {
 float: left;
