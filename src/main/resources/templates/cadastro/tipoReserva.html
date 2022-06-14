@@ -1,28 +1,139 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
+    <link rel="stylesheet" href="../css/reserva.css">
 <head>
 <meta charset="UTF-8">
 <title>Tipo reserva</title>
 </head>
 <body>
-	<h1>Adicione um Tipo de Reserva</h1>
-	<form action="salvatiporeserva" method="post"> 
-	<input type="hidden" name="id" />
-	
-	<label>Tipo de Reserva</label>
-	<input type="text" name="nome" />
-	
-	<button type="submit"> Salvar</button>
-	</form>
-	
 
-<script language=javascript type="text/javascript">
-function newPopup(){
-varWindow = window.open ('popup.html', 'popup')
-}
-</script>
+    <nav>
+            <div class="nav-wrapper">
+            <img src="../imagens/logo_senai_preto.png" alt="Logo do SENAI">
+                
+            </div>
+        </nav>
+              <nav class="main-menu">
+        <ul>
+            
+            <li>
+                <a href="http://10.92.198.27:8080/evento">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        <b>Home</b>
+                    </span>
+                </a>
+            
+            </li>
 
-<a href="" onClick="javascript:window.open ('popup.html') ; return false">Abrir popup</a>
+            <li>
+                <a href="/login">
+                    <i class="fa fa-sign-in"></i>
+                    <span class="nav-text">
+                        <b>Login</b>
+                    </span>
+                </a>
+            
+            </li>
+
+            <li>
+                <a href="/agendamento">
+                    <i class="fa fa-calendar"></i>
+                    <span class="nav-text">
+                        <b>Agendamento</b>
+                    </span>
+                </a>
+            
+            </li>
+            
+            <li>
+                <a href="/cadastro">
+                    <i class="fa fa-user"></i>
+                    <span class="nav-text">
+                        <b>Cadastrar Usuário</b>
+                    </span>
+                </a>
+            
+            </li>
+              <li>
+                <a href="/listareserva/1">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">
+                        <b>Lista de Reservas</b>
+                    </span>
+                </a>
+            
+            </li>
+              <li>
+                <a href="/lista/1">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">
+                        <b>Listas de Usuario</b>
+                    </span>
+                </a>
+            
+            </li>
+              <li>
+                <a href="/listatiporeserva/1">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-text">
+                        <b>Lista Tipo da Reserva</b>
+                    </span>
+                </a>
+            
+            </li>
+            
+        </ul>
+
+        <ul class="logout">
+            <li>
+            <a href="/logout">
+                    <i class="fa fa-sign-out"></i>
+                    <span class="nav-text">
+                        <b>Deslogar</b>
+                    </span>
+                </a>
+            </li>  
+        </ul>
+    </nav>
+    <div class="titulo">
+	    <h1>Adicione um Tipo de Reserva</h1>
+    </div>
+
+
+    <div class="login-box">
+        <form action="salvatiporeserva" method="post"> 
+            <input type="hidden" name="id"/>
+
+        <div class="user-box">
+            <input type="text" name="nome" required=""/>
+            <label>Tipo de Reserva</label>
+        </div>
+
+        <button type="submit" class="custom-btn btn-15"><b>Salvar</b></button>							
+        <span style="margin-top: 350px;">
+        <div th:replace="fragments/mensagem">
+        </div>
+        
+        </span>	
+        </form>
+    </div>
+
+    <footer>
+        <div class="icones">
+            <a href="https://www.facebook.com/senainacional/" target="_blank" title="Link de acesso ao facebook do SENAI"><img src="imagens/facebook.png"></a>
+            <a href="https://twitter.com/senainacional?lang=en" target="_blank" title="Link de acesso ao twitter do SENAI"><img src="imagens/twitter.png"></a>
+            <a href="https://www.youtube.com/c/senaibrasil" target="_blank" title="Link de acesso ao youtube do SENAI"><img src="imagens/youtube.png"></a>
+            <a href="https://br.linkedin.com/company/senai-nacional" target="_blank" title="Link de acesso ao linkedin do SENAI"><img src="imagens/linkedin.png"></a>
+            <a href="https://www.instagram.com/senai_nacional/" target="_blank" title="Link de acesso ao instagram do SENAI"><img src="imagens/instagram.png"></a>
+        </div>
+        <div class="info-senai">
+            <p></p>			
+        </div>
+        <div class="direitos">
+            <small>Copyright 2022 © Todos os direitos reservados.</small>
+        </div>		
+    </footer>
 
 </body>
 </html>

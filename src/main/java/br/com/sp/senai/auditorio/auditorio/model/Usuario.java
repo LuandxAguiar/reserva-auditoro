@@ -10,6 +10,10 @@ import javax.validation.constraints.NotEmpty;
 import br.com.sp.senai.auditorio.auditorio.util.HashUtil;
 import lombok.Data;
 
+/**
+ * @author TecDevNoite
+ *
+ */
 @Data
 @Entity
 public class Usuario {
@@ -24,6 +28,7 @@ public class Usuario {
 	@NotEmpty
 	private String nif;
 	private Hierarquia hierarquia;
+	private boolean ativoDesat;
 
 	public void setSenha(String senha) {
 		this.senha = HashUtil.hash(senha);

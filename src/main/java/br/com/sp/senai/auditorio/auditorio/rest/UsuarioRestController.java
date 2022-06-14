@@ -67,7 +67,7 @@ public class UsuarioRestController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<br.com.sp.senai.auditorio.auditorio.model.TokenJWT> logar(@RequestBody Usuario usuario) {
 		// Buscar o usuario no banco de dados
-		usuario = repository.findByNifAndSenha(usuario.getNif(), usuario.getSenha());
+		usuario = repository.findByNifAndSenhaAndAtivoDesat(usuario.getNif(), usuario.getSenha(), true);
 		// Verifica se o usuário não é nulo
 		if (usuario != null) {
 			// Variável para inserir dados no payload

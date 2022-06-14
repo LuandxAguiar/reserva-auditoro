@@ -124,8 +124,9 @@ function test(pageNumber)
 					<th class="aumentar">E-mail</th>
 					<th class="aumentar">Hierarquia</th>
 					<th class="aumentar">Nif</th>
+					<th class="aumentar">Usuário Ativo</th>
 					<th class="aumentar">Alterar</th>
-					<th class="aumentar">Excluir</th>
+					<th class="aumentar">Desativar Usuário</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -134,7 +135,8 @@ function test(pageNumber)
 					<td th:text="${user.nome}" />
 					<td th:text="${user.email}" />
 					<td th:text="${user.hierarquia}" />
-					<td th:text="${user.nif}" />				
+					<td th:text="${user.nif}" />
+					<td th:text="${user.ativoDesat} ? 'Ativo' : 'Desativado'" />			
 					<td><a th:href="@{/alterando(id=${user.id})}"><i class="material-icons">create</i> </a></td>
 					<td><a th:href="@{/exclue(id=${user.id})}"> <i class="material-icons">delete_forever</i> </a></td>
 				</tr>

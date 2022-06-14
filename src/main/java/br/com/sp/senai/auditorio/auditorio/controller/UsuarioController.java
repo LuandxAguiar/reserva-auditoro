@@ -90,6 +90,7 @@ public class UsuarioController {
 
 		try {
 			System.out.println("passou tati salve");
+			usuario.setAtivoDesat(true);
 			repository.save(usuario);
 			attr.addFlashAttribute("mensagemSucesso", "Administrador cadastrado com sucesso ID:" + usuario.getId());
 		} catch (Exception e) {
@@ -141,7 +142,9 @@ public class UsuarioController {
 	@Administrador
 	@RequestMapping("exclue")
 	public String exclua(Long id) {
-		repository.deleteById(id);
+		Usuario userExclu = repository.findById(id).get();
+		userExclu.setAtivoDesat(false);
+		repository.save(userExclu);
 		return "redirect:lista/1";
 	}
 	// buscar
@@ -155,7 +158,7 @@ public class UsuarioController {
 		System.out.println(admLogin.getNif());
 		System.out.println(admLogin.getSenha());
 
-		Usuario user = repository.findByNifAndSenha(admLogin.getNif(), admLogin.getSenha());
+		Usuario user = repository.findByNifAndSenhaAndAtivoDesat(admLogin.getNif(), admLogin.getSenha(), true);
 		// verificar se existe
 		if (user == null) {
 			System.out.println("usuario não existe");

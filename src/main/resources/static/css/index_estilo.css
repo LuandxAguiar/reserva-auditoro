@@ -9,7 +9,9 @@
 }
 
 body {
-	background-image: url("../imagens/auditorium.jpg");
+	background-image: url("../imagens/auditorio.png");
+	background-size: 99.9%;
+	
 }
 
 .nav-wrapper {

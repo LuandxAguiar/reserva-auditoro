@@ -13,7 +13,7 @@ public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, L
 
 	public List<Usuario> findByNif(String nif);
 
-	public Usuario findByNifAndSenha(String nif, String senha);
+	public Usuario findByNifAndSenhaAndAtivoDesat(String nif, String senha, boolean ad);
 
 	public Usuario findByNifAndSenhaAndHierarquia(String nif, String senha, Hierarquia hierarquia);
 	
