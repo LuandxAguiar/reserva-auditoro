@@ -59,7 +59,7 @@ public class ReservaController {
 
 		if (agendamento != null) {
 
-			attr.addFlashAttribute("mensagemErro", "Verificar campos");
+			attr.addFlashAttribute("mensagemErro", "Verificar campos de preenchimento");
 			return "redirect:agendamento";
 		}
 		
